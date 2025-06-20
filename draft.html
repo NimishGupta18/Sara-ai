@@ -1,0 +1,2015 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+    <meta name="description" content="Sara.ai - AI-powered stock analysis and research platform for investors and stock enthusiasts.">
+    <title>Sara.ai - Next-Gen Stock Analysis</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <meta property="og:title" content="Sara.ai - AI-Powered Company Research Platform">
+    <meta property="og:description" content="Gain extensive details and valuable insights for informed investment decisions.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://sara.ai">
+    <meta property="og:image" content="https://placehold.co/1200x630/2F2E41/ffffff?text=Sara.ai+OG+Image">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Include html2pdf.js library for PDF generation -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+    <style type="text/css">
+        /* Tailwind CSS v3.4.17 | MIT License | https://tailwindcss.com */
+        *, ::before, ::after { box-sizing: border-box; border-width: 0; border-style: solid; border-color: currentColor; --tw-translate-x: 0; /* ... other Tailwind resets ... */ }
+        html, :host { line-height: 1.5; -webkit-text-size-adjust: 100%; font-family: 'Poppins', sans-serif; /* Changed font to Poppins */ }
+        body { margin: 0; line-height: inherit; }
+        html { scroll-behavior: smooth; overflow-x: hidden; } /* Added overflow-x: hidden to prevent horizontal scrolling */
+
+        :root {
+            --radius: 12px;
+            --shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+            --primary-rgb: 76, 175, 80; /* A fresh green */
+            --secondary-rgb: 33, 150, 243; /* A vibrant blue */
+            --accent-rgb: 255, 159, 0; /* A bright orange for highlights */
+            --primary: rgb(var(--primary-rgb));
+            --primary-light: rgb(129, 201, 133);
+            --secondary: rgb(var(--secondary-rgb));
+            --secondary-light: rgb(100, 181, 246);
+            --accent: rgb(var(--accent-rgb));
+            --color-bg: #f8fbfd; /* Very light cool gray */
+            --color-text: #2c3e50; /* Dark blue-gray */
+            --color-border: #e0e7ff; /* Light blue border */
+            --dark-surface: #2F2E41; /* Dark charcoal for footer/dark sections */
+            --dark-text: #E0E7FF;
+        }
+
+        body { background-color: var(--color-bg); font-family: 'Poppins', sans-serif; color: var(--color-text); }
+        * { border-color: var(--color-border); }
+        .container { width: 100%; margin-left: auto; margin-right: auto; padding-left: 1rem; padding-right: 1rem; }
+        @media (min-width: 640px) { .container { max-width: 640px; } }
+        @media (min-width: 768px) { .container { max-width: 768px; } }
+        @media (min-width: 1024px) { .container { max-width: 1024px; } }
+        @media (min-width: 1280px) { .container { max-width: 1280px; } }
+        @media (min-width: 1536px) { .container { max-width: 1536px; } }
+
+        .shadow-sara { box-shadow: var(--shadow); }
+        .rounded-sara { border-radius: var(--radius); }
+        
+        .bg-primary { background-color: var(--primary); }
+        .text-primary { color: var(--primary); }
+        .hover\:bg-primary-light:hover { background-color: var(--primary-light); }
+        .hover\:text-primary-light:hover { color: var(--primary-light); }
+        .bg-secondary { background-color: var(--secondary); }
+        .text-secondary { color: var(--secondary); }
+        .bg-accent { background-color: var(--accent); }
+        .text-accent { color: var(--accent); }
+        .fill-accent { fill: var(--accent); }
+        .bg-dark-surface { background-color: var(--dark-surface); } /* Changed from bg-dark */
+        .text-dark-text { color: var(--dark-text); } /* Changed from text-dark */
+        .bg-light { background-color: var(--color-bg); } 
+        
+        .bg-primary\/10 { background-color: rgba(var(--primary-rgb), 0.1); }
+        .bg-primary\/5 { background-color: rgba(var(--primary-rgb), 0.05); }
+        .bg-primary\/20 { background-color: rgba(var(--primary-rgb), 0.2); }
+        .bg-primary\/30 { background-color: rgba(var(--primary-rgb), 0.3); }
+        .border-primary\/20 { border-color: rgba(var(--primary-rgb), 0.2); }
+        .bg-secondary\/5 { background-color: rgba(var(--secondary-rgb), 0.05); }
+        .bg-secondary\/20 { background-color: rgba(var(--secondary-rgb), 0.2); }
+        .border-secondary\/20 { border-color: rgba(var(--secondary-rgb), 0.2); }
+        .bg-accent\/5 { background-color: rgba(var(--accent-rgb), 0.05); }
+        .bg-accent\/20 { background-color: rgba(var(--accent-rgb), 0.2); }
+        .border-accent\/20 { border-color: rgba(var(--accent-rgb), 0.2); }
+
+        .bg-gradient-to-r { background-image: linear-gradient(to right, var(--tw-gradient-stops)); }
+        .from-primary { --tw-gradient-from: var(--primary) var(--tw-gradient-from-position); --tw-gradient-to: rgba(var(--primary-rgb), 0) var(--tw-gradient-to-position); --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to); }
+        .to-secondary { --tw-gradient-to: var(--secondary) var(--tw-gradient-to-position); }
+        .from-secondary { --tw-gradient-from: var(--secondary) var(--tw-gradient-from-position); --tw-gradient-to: rgba(var(--secondary-rgb), 0) var(--tw-gradient-to-position); --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to); }
+        .to-primary { --tw-gradient-to: var(--primary) var(--tw-gradient-to-position); }
+        .from-accent { --tw-gradient-from: var(--accent) var(--tw-gradient-from-position); --tw-gradient-to: rgba(var(--accent-rgb), 0) var(--tw-gradient-to-position); --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to); }
+        .to-accent { --tw-gradient-to: var(--accent) var(--tw-gradient-to-position); }
+        .from-primary\/30 { --tw-gradient-from: rgba(var(--primary-rgb), 0.3) var(--tw-gradient-from-position); --tw-gradient-to: rgba(var(--primary-rgb),0) var(--tw-gradient-to-position); --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to); }
+        .to-primary\/10 { --tw-gradient-to: rgba(var(--primary-rgb), 0.1) var(--tw-gradient-to-position); }
+        .from-secondary\/30 { --tw-gradient-from: rgba(var(--secondary-rgb), 0.3) var(--tw-gradient-from-position); --tw-gradient-to: rgba(var(--secondary-rgb),0) var(--tw-gradient-to-position); --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to); }
+        .to-secondary\/10 { --tw-gradient-to: rgba(var(--secondary-rgb), 0.1) var(--tw-gradient-to-position); }
+        .bg-gradient-to-br { background-image: linear-gradient(to bottom right, var(--tw-gradient-stops)); }
+        .to-primary\/60 { --tw-gradient-to: rgba(var(--primary-rgb), 0.6) var(--tw-gradient-to-position); }
+        .to-secondary\/60 { --tw-gradient-to: rgba(var(--secondary-rgb), 0.6) var(--tw-gradient-to-position); }
+        .to-accent\/60 { --tw-gradient-to: rgba(var(--accent-rgb), 0.6) var(--tw-gradient-to-position); }
+        .to-primary\/80 { --tw-gradient-to: rgba(var(--primary-rgb), 0.8) var(--tw-gradient-to-position); }
+        .to-secondary\/80 { --tw-gradient-to: rgba(var(--secondary-rgb), 0.8) var(--tw-gradient-to-position); }
+        .to-accent\/80 { --tw-gradient-to: rgba(var(--accent-rgb), 0.8) var(--tw-gradient-to-position); }
+        .bg-gradient-to-b { background-image: linear-gradient(to bottom, var(--tw-gradient-stops)); }
+        .from-light { --tw-gradient-from: var(--color-bg) var(--tw-gradient-from-position); --tw-gradient-to: rgba(248,251,253,0) var(--tw-gradient-to-position); --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to); }
+        .via-light { --tw-gradient-to: rgba(248,251,253,0) var(--tw-gradient-to-position); --tw-gradient-stops: var(--tw-gradient-from), var(--color-bg) var(--tw-gradient-via-position), var(--tw-gradient-to); }
+        .bg-gradient-to-t { background-image: linear-gradient(to top, var(--tw-gradient-stops)); }
+        .from-dark-surface\/80 { --tw-gradient-from: rgba(47,46,65,0.8) var(--tw-gradient-to-position); --tw-gradient-to: rgba(47,46,65,0) var(--tw-gradient-to-position); --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to); } /* Updated for dark-surface */
+        .to-transparent { --tw-gradient-to: transparent var(--tw-gradient-to-position); }
+        .bg-gradient-to-tr { background-image: linear-gradient(to top right, var(--tw-gradient-stops)); }
+        .from-dark-surface\/40 { --tw-gradient-from: rgba(47,46,65,0.4) var(--tw-gradient-to-position); --tw-gradient-to: rgba(47,46,65,0) var(--tw-gradient-to-position); --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to); } /* Updated for dark-surface */
+        .to-dark-surface\/10 { --tw-gradient-to: rgba(47,46,65,0.1) var(--tw-gradient-to-position); } /* Updated for dark-surface */
+        .bg-clip-text { -webkit-background-clip: text; background-clip: text; }
+        .text-transparent { color: transparent; }
+
+        @keyframes fadeInUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+        .animate-fade-in-up { animation: fadeInUp 0.8s ease-out forwards; opacity: 0; }
+        .animate-visible { opacity: 1; transform: translateY(0); }
+        .animate-delay-100 { animation-delay: 100ms; } .animate-delay-200 { animation-delay: 200ms; } .animate-delay-300 { animation-delay: 300ms; } .animate-delay-400 { animation-delay: 400ms; } .animate-delay-500 { animation-delay: 500ms; } .animate-delay-600 { animation-delay: 600ms; } .animate-delay-700 { animation-delay: 700ms; }
+        @keyframes pulseGlow { 0%, 100% { opacity: 1; transform: scale(1); } 50% { opacity: 0.85; transform: scale(1.05); } }
+        .animate-pulse-slow { animation: pulseGlow 7s ease-in-out infinite; }
+        .animate-pulse-soft { animation: pulseGlow 3s ease-in-out infinite; }
+
+        .mobile-menu-hidden { display: none; } .mobile-menu-visible { display: block; }
+        .how-it-works-step-title span { background-image: linear-gradient(to right, var(--tw-gradient-from), var(--tw-gradient-to)); -webkit-background-clip: text; background-clip: text; color: transparent; }
+        .how-it-works-step-title.text-primary span { --tw-gradient-from: var(--primary); --tw-gradient-to: rgba(var(--primary-rgb), 0.7); }
+        .how-it-works-step-title.text-secondary span { --tw-gradient-from: var(--secondary); --tw-gradient-to: rgba(var(--secondary-rgb), 0.7); }
+        .how-it-works-step-title.text-accent span { --tw-gradient-from: var(--accent); --tw-gradient-to: rgba(var(--accent-rgb), 0.7); }
+
+        #search-tips-container { opacity: 0; transform: translateY(20px); transition: opacity 0.7s ease-out, transform 0.7s ease-out; }
+        #search-tips-container.tips-visible { opacity: 1; transform: translateY(0); }
+        .search-tip-item { opacity: 0; transform: translateY(10px); transition: opacity 0.5s ease-out, transform 0.5s ease-out; }
+        .search-tip-item.tip-visible { opacity: 1; transform: translateY(0); }
+        .search-tips-card { background-color: rgba(255, 255, 255, 0.8); backdrop-filter: blur(12px); border: 1px solid rgba(var(--primary-rgb), 0.25); box-shadow: 0 8px 32px 0 rgba(var(--primary-rgb), 0.15); }
+        .search-tips-card h3 { background: linear-gradient(to right, var(--primary), var(--secondary)); -webkit-background-clip: text; background-clip: text; color: transparent; }
+        .search-tip-item svg { transition: transform 0.3s ease-in-out; }
+        .search-tip-item:hover svg { transform: scale(1.2) rotate(5deg); }
+        .search-tip-item p { transition: color 0.3s ease; }
+        .search-tip-item:hover p { color: var(--primary); }
+        .search-tips-card h3::after { content: ''; display: block; width: 50px; height: 2px; background: linear-gradient(to right, var(--primary), var(--secondary)); margin: 8px auto 0; opacity: 0.7; }
+
+        .surreal-feature-card-wrapper { perspective: 1000px; }
+        .surreal-feature-card {
+            background-color: rgba(255, 255, 255, 0.7); backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.3); border-radius: var(--radius);
+            padding: 2rem;
+            transition: transform 0.5s cubic-bezier(0.25, 0.8, 0.25, 1), box-shadow 0.5s cubic-bezier(0.25, 0.8, 0.25, 1);
+            transform-style: preserve-3d; position: relative; overflow: hidden;
+            min-height: 300px; display: flex; flex-direction: column;
+        }
+        .surreal-feature-card::before {
+            content: ""; position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+            border-radius: var(--radius);
+            background: linear-gradient(135deg, rgba(var(--card-aurora-color, var(--primary-rgb)), 0.3) 0%, rgba(var(--card-aurora-color, var(--primary-rgb)), 0.1) 50%, rgba(var(--card-aurora-color, var(--primary-rgb)), 0.3) 100%);
+            background-size: 300% 300%; opacity: 0; z-index: 0;
+            transition: opacity 0.7s ease-in-out; animation: auroraMovement 12s ease infinite alternate;
+        }
+        .surreal-feature-card.card-primary::before { --card-aurora-color: var(--primary-rgb); }
+        .surreal-feature-card.card-secondary::before { --card-aurora-color: var(--secondary-rgb); }
+        .surreal-feature-card.card-accent::before { --card-aurora-color: var(--accent-rgb); }
+        @keyframes auroraMovement { 0% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } 100% { background-position: 0% 50%; } }
+        @keyframes iconPulse { 0%, 100% { filter: drop-shadow(0 0 3px rgba(255,255,255,0.5)); transform: scale(1); } 50% { filter: drop-shadow(0 0 10px rgba(255,255,255,0.8)); transform: scale(1.1); } }
+        .surreal-feature-card:hover { transform: translateY(-10px) rotateX(2deg) rotateY(-2deg) scale(1.02); box-shadow: 0 20px 40px rgba(0,0,0,0.2), 0 0 15px rgba(var(--card-aurora-color, var(--primary-rgb)), 0.5); }
+        .surreal-feature-card:hover::before { opacity: 1; }
+        .surreal-icon-container {
+            width: 4rem; height: 4rem; border-radius: 0.75rem; display: flex; align-items: center; justify-content: center;
+            margin-bottom: 1.5rem; position: relative; z-index: 1;
+            transition: transform 0.4s ease-out, filter 0.4s ease-out;
+        }
+        .surreal-feature-card:hover .surreal-icon-container { transform: translateY(-8px) scale(1.1); }
+        .surreal-feature-card:hover .surreal-icon-container svg { animation: iconPulse 1.5s ease-in-out infinite; }
+        .surreal-content { position: relative; z-index: 1; flex-grow: 1; display: flex; flex-direction: column; }
+        .surreal-content h3 { font-size: 1.25rem; font-weight: 600; margin-bottom: 0.75rem; color: var(--color-text); transition: color 0.3s ease; }
+        .surreal-feature-card:hover .surreal-content h3 { color: var(--primary); }
+        .surreal-feature-card.card-primary:hover .surreal-content h3 { color: var(--primary); }
+        .surreal-feature-card.card-secondary:hover .surreal-content h3 { color: var(--secondary); }
+        .surreal-feature-card.card-accent:hover .surreal-content h3 { color: var(--accent); }
+        .surreal-content p { font-size: 0.95rem; line-height: 1.6; color: #4A5568; flex-grow: 1; }
+        .surreal-feature-card:hover .surreal-content p { color: var(--color-text); }
+
+        /* Styles for LLM Report Output */
+        #searchResultsContent .report-main-title, #company1Report .report-main-title, #company2Report .report-main-title { 
+            font-size: 1.5rem; 
+            font-weight: 700; 
+            color: var(--primary);
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--primary-light);
+        }
+        #searchResultsContent .report-section, 
+        #company1Report .report-section, #company2Report .report-section,
+        .accordion-content .report-section { /* Added .accordion-content */
+            margin-bottom: 1.5rem; 
+            padding-bottom: 1rem;
+        }
+        #searchResultsContent .report-section:not(:last-child),
+        #company1Report .report-section:not(:last-child),
+        #company2Report .report-section:not(:last-child),
+        .accordion-content .report-section:not(:last-child) { /* Added .accordion-content */
+             border-bottom: 1px dashed var(--color-border); 
+        }
+         #searchResultsContent .report-section:last-child,
+         #company1Report .report-section:last-child,
+         #company2Report .report-section:last-child,
+         .accordion-content .report-section:last-child { /* Added .accordion-content */
+            border-bottom: none;
+            margin-bottom: 0;
+        }
+        #searchResultsContent .section-title, 
+        #company1Report .section-title, #company2Report .section-title,
+        .accordion-content .section-title { /* Added .accordion-content */
+            font-size: 1.25rem; 
+            font-weight: 600; 
+            color: var(--secondary);
+            margin-bottom: 0.75rem; 
+            padding-bottom: 0.25rem;
+            border-bottom: 1px solid rgba(var(--secondary-rgb), 0.3);
+        }
+        #searchResultsContent .subsection-title, 
+        #company1Report .subsection-title, #company2Report .subsection-title,
+        .accordion-content .subsection-title { /* Added .accordion-content */
+            font-size: 1rem; 
+            font-weight: 600; 
+            color: var(--primary-light);
+            margin-top: 0.75rem; 
+            margin-bottom: 0.25rem; 
+        }
+        #searchResultsContent p, #searchResultsContent li, 
+        #company1Report p, #company1Report li, 
+        #company2Report p, #company2Report li,
+        .accordion-content p, .accordion-content li { /* Added .accordion-content */
+            margin-bottom: 0.5rem; 
+            white-space: pre-wrap; 
+            line-height: 1.65;
+            color: #374151; 
+        }
+        #searchResultsContent ul, #company1Report ul, #company2Report ul,
+        .accordion-content ul { /* Added .accordion-content */
+            list-style-type: disc;
+            padding-left: 1.5rem; 
+            margin-bottom: 1rem;
+        }
+        #searchResultsContent strong, #company1Report strong, #company2Report strong,
+        .accordion-content strong { /* Added .accordion-content */
+             color: var(--color-text); 
+             font-weight: 500; 
+        }
+        #searchResultsContent .citation, #company1Report .citation, #company2Report .citation,
+        .accordion-content .citation { /* Added .accordion-content */
+            font-size: 0.8em;
+            color: #6b7280; 
+            margin-left: 0.25rem;
+        }
+        #searchResultsContent .integrity-statement-section, 
+        #company1Report .integrity-statement-section, 
+        #company2Report .integrity-statement-section,
+        .accordion-content .integrity-statement-section { /* Added .accordion-content */
+            font-size: 0.875rem; 
+            color: #4b5563; 
+            margin-top: 1.5rem; 
+            padding-top: 0.75rem; 
+            border-top: 1px solid var(--color-border);
+        }
+        #searchResultsContent .integrity-statement-section p,
+        #company1Report .integrity-statement-section p,
+        #company2Report .integrity-statement-section p,
+        .accordion-content .integrity-statement-section p { /* Added .accordion-content */
+            font-size: 0.875rem; 
+             margin-bottom: 0.25rem;
+        }
+        #searchResultsContent .source-link, #company1Report .source-link, #company2Report .source-link,
+        .accordion-content .source-link { /* Added .accordion-content */
+            color: var(--primary);
+            text-decoration: underline;
+        }
+         #searchResultsContent .source-link:hover, 
+         #company1Report .source-link:hover, 
+         #company2Report .source-link:hover,
+         .accordion-content .source-link:hover { /* Added .accordion-content */
+            color: var(--primary-light);
+        }
+        #searchResultsContent .data-na, #company1Report .data-na, #company2Report .data-na,
+        .accordion-content .data-na { /* Added .accordion-content */
+            color: #9ca3af; 
+            font-style: italic;
+        }
+        /* Specific styling for comparison view columns */
+        #company1Report, #company2Report {
+            max-height: 100vh; /* Example max height */
+            overflow-y: auto; /* Allow scrolling within each report column */
+        }
+        /* Styles for PDF content (optional, for print-specific adjustments) */
+        @media print {
+            body {
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+                background-color: #ffffff !important; /* Ensure white background for PDF */
+            }
+            /* Adjust margins and layout for A4 print, though html2pdf handles much of this */
+            .report-section {
+                break-inside: avoid; /* Avoid breaking sections across pages where possible */
+            }
+            .no-print {
+                display: none !important;
+            }
+        }
+
+        /* Loading Overlay Styles */
+        #pdfLoadingOverlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.6);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999; /* Ensure it's on top of everything */
+            transition: opacity 0.3s ease-in-out;
+            opacity: 0;
+            visibility: hidden;
+        }
+
+        #pdfLoadingOverlay.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        #pdfLoadingContent {
+            background-color: white;
+            padding: 30px 40px;
+            border-radius: 12px;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            color: #252525;
+        }
+
+        #pdfLoadingContent .spinner {
+            border: 4px solid rgba(var(--primary-rgb), 0.2);
+            border-top: 4px solid var(--primary);
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 15px auto;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /* Accordion Specific Styles */
+        .accordion-item {
+            border: 1px solid var(--color-border);
+            border-radius: var(--radius);
+            margin-bottom: 1rem;
+            overflow: hidden;
+        }
+
+        .accordion-header {
+            background-color: #ffffff;
+            padding: 1rem 1.5rem;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 600;
+            color: var(--color-text);
+            transition: background-color 0.2s ease, color 0.2s ease;
+            border-bottom: 1px solid transparent; /* default */
+        }
+
+        .accordion-header:hover {
+            background-color: var(--primary-light);
+            color: white;
+        }
+        .accordion-header.active {
+            background-color: var(--primary);
+            color: white;
+            border-bottom-color: var(--primary-light);
+        }
+
+        .accordion-header .arrow-icon {
+            transition: transform 0.3s ease;
+        }
+
+        .accordion-header.active .arrow-icon {
+            transform: rotate(180deg);
+        }
+
+        .accordion-content {
+            background-color: #fcfcfc;
+            border-top: 1px solid var(--color-border);
+            padding: 0 1.5rem; /* No vertical padding initially */
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s ease-in-out, padding 0.5s ease-in-out;
+        }
+
+        .accordion-content.open {
+            max-height: 3000px; /* Arbitrarily large value for smooth transition */
+            padding: 1.5rem;
+        }
+
+        .company-comparison-column {
+            background-color: #fff;
+            border: 1px solid var(--color-border);
+            border-radius: var(--radius);
+            padding: 1.25rem;
+            margin-bottom: 1rem; /* Space between columns on small screens */
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        }
+        .company-comparison-column h6 {
+            color: var(--primary); /* Consistent color for company titles in comparison */
+            font-size: 1.125rem;
+            margin-bottom: 0.75rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 1px dashed rgba(var(--primary-rgb), 0.2);
+        }
+        @media (min-width: 768px) {
+            .company-comparison-column {
+                margin-bottom: 0; /* Remove margin between columns on larger screens */
+            }
+        }
+    </style>
+</head>
+<body>
+    <div id="root">
+        <div class="flex flex-col min-h-screen">
+            <header class="fixed top-0 left-0 right-0 bg-white shadow-sara z-50 no-print">
+                <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+                    <a href="/" class="flex items-center">
+                        <div class="flex items-center">
+                            <div class="mr-2 w-8 h-8">
+                                <!-- SARA Logo - using a stylized stock chart icon -->
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-area-chart text-primary">
+                                    <path d="M3 3v18h18"/><path d="M7 12v5h4V8h4v8h4"/>
+                                </svg>
+                            </div>
+                            <span class="font-bold text-2xl text-secondary">Sara.ai</span> <!-- Changed logo text color -->
+                        </div>
+                    </a>
+                    <nav class="hidden md:flex items-center space-x-8">
+                        <a href="/" class="text-gray-700 font-medium hover:text-primary transition-colors">Home</a>
+                        <a href="javascript:void(0);" id="nav-companies-desktop" class="text-gray-700 font-medium hover:text-primary transition-colors">Research</a>
+                        <a href="#features" class="text-gray-700 font-medium hover:text-primary transition-colors">Features</a>
+                        <a href="#how-it-works" class="text-gray-700 font-medium hover:text-primary transition-colors">How It Works</a>
+                    </nav>
+                    <div class="flex items-center space-x-4">
+                        <a href="javascript:void(0);" id="nav-get-started-desktop-link">
+                            <button id="nav-get-started-desktop-button" class="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg]:size-4 [&amp;_svg]:shrink-0 h-10 px-4 py-2 bg-primary text-white hover:bg-primary-light transition-colors rounded-sara">Get Started</button>
+                        </a>
+                        <button id="mobile-menu-button" class="md:hidden text-gray-700" aria-label="Toggle mobile menu">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-menu h-6 w-6">
+                                <line x1="4" x2="20" y1="12" y2="12"></line>
+                                <line x1="4" x2="20" y1="6" y2="6"></line>
+                                <line x1="4" x2="20" y1="18" y2="18"></line>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+                <div id="mobile-menu" class="md:hidden bg-white w-full pb-4 px-4 mobile-menu-hidden">
+                    <nav class="flex flex-col space-y-4">
+                        <a href="/" class="text-gray-700 font-medium py-2">Home</a>
+                        <a href="javascript:void(0);" id="nav-companies-mobile" class="text-gray-700 font-medium py-2">Research</a>
+                        <a href="#features" id="nav-features-mobile" class="text-gray-700 font-medium py-2">Features</a>
+                        <a href="#how-it-works" id="nav-how-it-works-mobile" class="text-gray-700 font-medium py-2">How It Works</a>
+                        <a href="javascript:void(0);" id="nav-get-started-mobile" class="text-gray-700 font-medium py-2">Get Started</a>
+                    </nav>
+                </div>
+            </header>
+
+            <main class="flex-grow pt-16">
+                <!-- Main content of the page -->
+                <section id="search-section" class="relative overflow-hidden py-16 md:py-24 bg-gradient-to-br from-white to-primary/5">
+                    <div class="absolute inset-0 z-0 opacity-10">
+                        <svg class="absolute inset-0 h-full w-full" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" fill="none">
+                            <defs>
+                                <pattern id="smallGrid" width="30" height="30" patternUnits="userSpaceOnUse">
+                                    <path d="M 30 0 L 0 0 0 30" fill="none" stroke="currentColor" stroke-width="0.5"></path>
+                                </pattern>
+                                <pattern id="grid" width="120" height="120" patternUnits="userSpaceOnUse">
+                                    <rect width="120" height="120" fill="url(#smallGrid)"></rect>
+                                    <path d="M 120 0 L 0 0 0 120" fill="none" stroke="currentColor" stroke-width="1"></path>
+                                </pattern>
+                            </defs>
+                            <rect width="100%" height="100%" fill="url(#grid)"></rect>
+                        </svg>
+                    </div>
+                    <div class="container mx-auto px-4 relative z-10">
+                        <div class="max-w-4xl mx-auto text-center mb-12 animate-fade-in-up">
+                            <h1 class="text-4xl md:text-5xl font-bold mb-6 leading-tight">Unlock <span class="text-primary">Actionable Insights</span> for Smarter Investments</h1>
+                            <p class="text-lg md:text-xl text-gray-700 mb-8">Sara.ai leverages cutting-edge AI to deliver comprehensive and intuitive stock analysis, empowering confident investment decisions.</p>
+                            <div class="max-w-2xl mx-auto mt-8">
+                                <form class="w-full" id="companySearchForm">
+                                    <div class="relative flex items-center bg-white border border-gray-300 rounded-sara shadow-sara overflow-hidden focus-within:ring-2 focus-within:ring-primary focus-within:border-primary transition duration-150 ease-in-out">
+                                        <div class="absolute inset-y-0 left-0 flex items-center pl-4 pointer-events-none">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-gray-500">
+                                                <circle cx="11" cy="11" r="8"></circle>
+                                                <path d="m21 21-4.3-4.3"></path>
+                                            </svg>
+                                        </div>
+                                        <input type="search"
+                                               name="company_search"
+                                               id="company_search_input"
+                                               class="block w-full py-4 pl-12 pr-3 text-lg text-gray-900 placeholder-gray-500 border-0 focus:ring-0 focus:outline-none"
+                                               placeholder="Search for a company (e.g., Apple, TSLA, Reliance Industries)"
+                                               aria-label="Search for a company">
+                                        <button type="submit" aria-label="Search" class="px-6 py-4 bg-secondary text-white hover:bg-secondary-light transition-colors duration-150 ease-in-out focus:outline-none focus:ring-2 focus:ring-secondary focus:ring-offset-2">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-right h-6 w-6">
+                                                <line x1="5" y1="12" x2="19" y2="12"></line>
+                                                <polyline points="12 5 19 12 12 19"></polyline>
+                                            </svg>
+                                        </button>
+                                    </div>
+                                </form>
+
+                                <div id="loadingIndicator" class="mt-4 text-center hidden">
+                                    <div class="flex justify-center items-center space-x-2">
+                                        <svg class="animate-spin h-5 w-5 text-primary" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                                          <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                                          <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                                        </svg>
+                                        <p class="text-primary font-medium">SARA is compiling a comprehensive stock analysis report... This may take a few moments.</p>
+                                    </div>
+                                </div>
+
+                                <div id="searchResultsContainer" class="mt-8 p-6 bg-white rounded-sara shadow-sara hidden text-left">
+                                    <div class="flex justify-between items-center mb-6">
+                                        <h3 class="text-2xl font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">SARA Stock Analysis Report</h3>
+                                        <div class="flex items-center space-x-2 no-print">
+                                            <!-- Save as PDF Button for single report -->
+                                            <button id="saveSinglePdfButton" aria-label="Save as PDF" class="text-gray-500 hover:text-red-500 transition-colors p-2 rounded-full hover:bg-gray-100">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-file-text"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"></path><path d="M14 2v4a2 2 0 0 0 2 2h4"></path><path d="M10 9H8"></path><path d="M16 13H8"></path><path d="M16 17H8"></path></svg>
+                                            </button>
+                                            <button id="closeResultsButton" aria-label="Close Report" class="text-gray-500 hover:text-red-500 transition-colors p-2 rounded-full hover:bg-gray-100">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-x"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <div id="searchResultsContent" class="text-gray-700">
+                                        <!-- Search results will be injected here -->
+                                    </div>
+                                </div>
+                                
+                                <div id="search-tips-container" class="max-w-2xl mx-auto mt-8">
+                                    <div class="search-tips-card p-6 rounded-lg">
+                                        <h3 class="text-xl font-semibold mb-4 text-center">Search Tips for SARA.ai</h3>
+                                        <ul class="space-y-4 text-left">
+                                            <li class="flex items-start space-x-3 search-tip-item">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-building-2 shrink-0 text-primary mt-1"><path d="M6 22V7H4a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v2a2 2 0 0 1-2 2h-2v15"/><path d="M14 11h2"/><path d="M14 15h2"/><path d="M14 19h2"/><path d="M18 11h2"/><path d="M18 15h2"/><path d="M18 19h2"/></svg>
+                                                <p class="text-sm text-gray-600">Use the <strong>full company name</strong> or <strong>accurate ticker symbol</strong> for precise results.</p>
+                                            </li>
+                                            <li class="flex items-start space-x-3 search-tip-item">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-dollar-sign shrink-0 text-primary mt-1"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+                                                <p class="text-sm text-gray-600">Specify <strong>industry or sector</strong> if the company name is generic (e.g., "Meta Platforms" vs. "Meta").</p>
+                                            </li>
+                                            <li class="flex items-start space-x-3 search-tip-item">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-check-circle-2 shrink-0 text-primary mt-1"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg>
+                                                <p class="text-sm text-gray-600">Double-check your <strong>spelling</strong> to avoid search errors.</p>
+                                            </li>
+                                            <li class="flex items-start space-x-3 search-tip-item">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-lightbulb shrink-0 text-primary mt-1"><path d="M15 14v1c0 2.21-1.79 4-4 4h-2c-2.21 0-4-1.79-4-4v-1"/><path d="M9 14h2a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2H9a2 2 0 0 0-2 2v5a2 2 0 0 0 2 2z"/><path d="M12 22v-2"/><path d="M12 2c-.9 0-1.7.3-2.3.9L8 4l2 2 4-4"/></svg>
+                                                <p class="text-sm text-gray-600">For less common entities, try searching with <strong>key executives or specific products/services</strong>.</p>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- NEW Company Comparison Section -->
+                <section id="compare-section" class="py-16 md:py-24 bg-light">
+                    <div class="container mx-auto px-4">
+                        <div class="max-w-4xl mx-auto text-center mb-12 animate-fade-in-up">
+                            <h2 class="text-3xl md:text-4xl font-bold mb-6 text-primary">Compare Investment Opportunities</h2>
+                            <p class="text-lg md:text-xl text-gray-700 mb-8">Get detailed stock analysis reports for two companies and compare them directly to make informed investment decisions.</p>
+                        </div>
+                        <form id="companyComparisonForm" class="max-w-3xl mx-auto animate-fade-in-up animate-delay-100">
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                                <div>
+                                    <label for="company1_compare_input" class="block text-sm font-medium text-gray-700 mb-1">Company 1 (Name or Ticker)</label>
+                                    <input type="search" id="company1_compare_input" class="block w-full py-3 px-4 text-md text-gray-900 placeholder-gray-500 border border-gray-300 rounded-sara shadow-sm focus:ring-primary focus:border-primary transition-colors" placeholder="e.g., Apple Inc. or AAPL">
+                                </div>
+                                <div>
+                                    <label for="company2_compare_input" class="block text-sm font-medium text-gray-700 mb-1">Company 2 (Name or Ticker)</label>
+                                    <input type="search" id="company2_compare_input" class="block w-full py-3 px-4 text-md text-gray-900 placeholder-gray-500 border border-gray-300 rounded-sara shadow-sm focus:ring-primary focus:border-primary transition-colors" placeholder="e.g., Microsoft Corp. or MSFT">
+                                </div>
+                            </div>
+                            <div class="text-center">
+                                <button type="submit" id="compareCompaniesButton" class="px-8 py-3 bg-secondary text-white rounded-sara hover:opacity-90 transition-opacity duration-150 ease-in-out focus:outline-none focus-visible:ring-2 focus-visible:ring-secondary focus-visible:ring-offset-2 font-semibold text-lg">
+                                    Compare Stocks
+                                </button>
+                            </div>
+                        </form>
+    
+                        <!-- Comparison Loading Indicator -->
+                        <div id="comparisonLoadingIndicator" class="mt-8 text-center hidden animate-fade-in-up">
+                            <div class="flex justify-center items-center space-x-2">
+                                <svg class="animate-spin h-6 w-6 text-secondary" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                                    <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                                    <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                                </svg>
+                                <p class="text-secondary font-medium text-lg">SARA is generating comparison reports... This may take some time.</p>
+                            </div>
+                        </div>
+    
+                        <!-- Comparison Results Container -->
+                        <div id="comparisonResultsContainer" class="mt-12 hidden animate-fade-in-up">
+                            <div class="flex justify-between items-center mb-6">
+                                 <h3 class="text-2xl md:text-3xl font-bold bg-gradient-to-r from-secondary to-primary bg-clip-text text-transparent">Side-by-Side Analysis</h3>
+                                 <div class="flex items-center space-x-2 no-print">
+                                    <button id="closeComparisonButton" aria-label="Close Comparison" class="text-gray-500 hover:text-red-500 transition-colors p-2 rounded-full hover:bg-gray-100">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-x"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+                                    </button>
+                                 </div>
+                            </div>
+                            <!-- Updated comparison section for Feature-by-Feature -->
+                            <div id="comparisonAccordionContainer" class="mt-4">
+                                <!-- Accordion items will be generated here by JavaScript -->
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+
+                <section id="features" class="relative py-20 md:py-32 overflow-hidden">
+                    <div class="absolute inset-0 bg-gradient-to-b from-light via-light to-primary/5 z-0"></div>
+                    <div class="absolute inset-0 opacity-30 z-0" style="background-image: radial-gradient(circle at 25px 25px, rgb(224, 231, 255) 2px, transparent 0px); background-size: 50px 50px;"></div>
+                    <div class="absolute top-20 left-10 w-64 h-64 rounded-full bg-primary/5 blur-3xl z-0 animate-pulse-slow"></div>
+                    <div class="absolute bottom-40 right-10 w-80 h-80 rounded-full bg-secondary/5 blur-3xl z-0 animate-pulse-slow" style="animation-delay: 1500ms;"></div>
+                    <div class="container relative z-10 mx-auto px-4">
+                        <div class="max-w-4xl mx-auto text-center mb-20 animate-fade-in-up">
+                            <span class="inline-block px-6 py-2 rounded-full bg-gradient-to-r from-primary/30 to-primary/10 text-primary font-medium text-sm mb-6 shadow-md">Features</span>
+                            <h2 class="text-4xl md:text-5xl font-bold mb-8 bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">Your Comprehensive Stock Research Toolkit</h2>
+                            <p class="text-lg md:text-xl text-gray-700 leading-relaxed">Sara.ai leverages advanced AI to collect, analyze, and synthesize critical financial information from thousands of public sources.</p>
+                        </div>
+                        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-10">
+                            <div class="animate-fade-in-up animate-delay-100 h-full surreal-feature-card-wrapper">
+                                <div class="surreal-feature-card card-primary">
+                                    <div class="surreal-icon-container bg-gradient-to-br from-primary/20 to-primary/5 shadow-lg shadow-primary/10">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="var(--primary)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-trending-up">
+                                            <polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/><polyline points="16 7 22 7 22 13"/>
+                                        </svg>
+                                    </div>
+                                    <div class="surreal-content">
+                                        <h3>In-depth Financial Analysis</h3>
+                                        <p>Access detailed reports on income statements, balance sheets, cash flows, and key financial ratios.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="animate-fade-in-up animate-delay-200 h-full surreal-feature-card-wrapper">
+                                <div class="surreal-feature-card card-secondary">
+                                    <div class="surreal-icon-container bg-gradient-to-br from-secondary/20 to-secondary/5 shadow-lg shadow-secondary/10">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="var(--secondary)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-candlestick-chart">
+                                            <path d="M9 6v.5A3 3 0 0 1 12 10a3 3 0 0 1 3-3.5V6h-.5A3 3 0 0 0 9 3.5V3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2h-3v.5A3 3 0 0 1 15 6h-3A3 3 0 0 1 9 3.5V3H6Z"/><path d="M12 10v10"/><path d="M18 7v1"/><path d="M18 16v1"/><path d="M6 7v1"/><path d="M6 16v1"/>
+                                        </svg>
+                                    </div>
+                                    <div class="surreal-content">
+                                        <h3>AI-Powered Market Insights</h3>
+                                        <p>Our AI synthesizes market trends, competitive landscapes, and news to provide actionable insights.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="animate-fade-in-up animate-delay-300 h-full surreal-feature-card-wrapper">
+                                <div class="surreal-feature-card card-accent">
+                                    <div class="surreal-icon-container bg-gradient-to-br from-accent/20 to-accent/5 shadow-lg shadow-accent/10">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-bar-chart-2">
+                                            <line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/>
+                                        </svg>
+                                    </div>
+                                    <div class="surreal-content">
+                                        <h3>Competitive Benchmarking</h3>
+                                        <p>Compare companies side-by-side on key metrics, strategies, and market positioning.</p>
+                                    </div>
+                                </div>
+                            </div>
+                             <div class="animate-fade-in-up animate-delay-400 h-full surreal-feature-card-wrapper">
+                               <div class="surreal-feature-card card-primary"> 
+                                    <div class="surreal-icon-container bg-gradient-to-br from-primary/20 to-primary/5 shadow-lg shadow-primary/10">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="var(--primary)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-bookmark">
+                                            <path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v16z"/>
+                                        </svg>
+                                    </div>
+                                    <div class="surreal-content">
+                                        <h3>Save & Organize Research</h3>
+                                        <p>Bookmark companies and save reports for easy access and future reference.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="animate-fade-in-up animate-delay-500 h-full surreal-feature-card-wrapper">
+                                <div class="surreal-feature-card card-secondary">
+                                    <div class="surreal-icon-container bg-gradient-to-br from-secondary/20 to-secondary/5 shadow-lg shadow-secondary/10">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-newspaper">
+                                            <path d="M4 22h16a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2H8a2 2 0 0 0-2 2v16a2 2 0 0 1-2 2Zm0 0a2 2 0 0 1-2-2v-9c0-1.1.9-2 2-2h2"></path><path d="M18 14h-8"></path><path d="M15 18h-5"></path><path d="M10 6h8v4h-8V6Z"></path>
+                                        </svg>
+                                    </div>
+                                    <div class="surreal-content">
+                                        <h3>Real-time News & Updates</h3>
+                                        <p>Stay updated with the most recent financial announcements, press releases, and market news.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="animate-fade-in-up animate-delay-600 h-full surreal-feature-card-wrapper">
+                                <div class="surreal-feature-card card-accent">
+                                     <div class="surreal-icon-container bg-gradient-to-br from-accent/20 to-accent/5 shadow-lg shadow-accent/10">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-scale">
+                                           <path d="m16 16.5 3.5 2.5 2-2.5L17.5 14l-3.5 2.5z"/><path d="m2 14 3.5 2.5L11 10l-6.5-2.5L2 14z"/><line x1="12" y1="3" x2="12" y2="21"/>
+                                        </svg>
+                                    </div>
+                                    <div class="surreal-content">
+                                        <h3>Risk & Opportunity Assessment</h3>
+                                        <p>Understand potential market risks, company-specific challenges, and future growth opportunities.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flex justify-center mt-16 animate-fade-in-up animate-delay-700">
+                            <a href="#search-section"> 
+                                <div class="relative inline-flex group">
+                                    <div class="absolute -inset-0.5 bg-gradient-to-r from-primary via-secondary to-accent rounded-xl blur-lg opacity-50 group-hover:opacity-100 transition duration-200"></div>
+                                    <button class="relative px-8 py-4 bg-white rounded-xl font-bold text-primary hover:text-gray-900 transition">Start Your Analysis</button>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </section>
+
+                <section id="how-it-works" class="relative py-24 md:py-32">
+                    <div class="absolute inset-0 bg-gradient-to-r from-secondary/5 to-primary/5 z-0"></div>
+                    <div class="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-primary/20 to-transparent"></div>
+                    <div class="absolute bottom-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-primary/20 to-transparent"></div>
+                    <div class="absolute -bottom-10 -right-10 w-72 h-72 rounded-full bg-secondary/5 blur-3xl z-0 animate-pulse-slow"></div>
+                    <div class="container relative z-10 mx-auto px-4">
+                        <div class="max-w-4xl mx-auto text-center mb-20">
+                            <div class="animate-fade-in-up">
+                                <span class="inline-block px-6 py-2 rounded-full bg-gradient-to-r from-secondary/30 to-secondary/10 text-secondary font-medium text-sm mb-6 shadow-md">How It Works</span>
+                                <h2 class="text-4xl md:text-5xl font-bold mb-8 bg-gradient-to-r from-secondary to-primary bg-clip-text text-transparent">SARA's Intelligent Workflow</h2>
+                                <p class="text-lg md:text-xl text-gray-700 leading-relaxed">Sara.ai's advanced AI engine meticulously collects, analyzes, and synthesizes critical financial and market data from verified sources.</p>
+                            </div>
+                        </div>
+                        <div class="relative">
+                            <div class="hidden md:block absolute top-1/2 left-0 w-full h-1 bg-gradient-to-r from-primary via-secondary to-accent opacity-20 transform -translate-y-1/2 z-0"></div>
+                            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12 lg:gap-20 relative z-10">
+                                <div class="relative group">
+                                    <div class="absolute inset-0 bg-white rounded-xl blur opacity-80 group-hover:opacity-100 transition-opacity duration-300 -m-4"></div>
+                                    <div class="relative text-center">
+                                        <div class="animate-fade-in-up animate-delay-100">
+                                            <div class="transform transition-transform duration-500 group-hover:scale-110">
+                                                <div class="relative">
+                                                    <div class="absolute inset-0 rounded-full bg-primary blur-md opacity-20 group-hover:opacity-40 transition-all duration-500 group-hover:scale-125"></div>
+                                                    <div class="w-32 h-32 rounded-full bg-gradient-to-br from-primary to-primary/60 flex items-center justify-center mx-auto mb-8 relative shadow-xl shadow-primary/20">
+                                                        <div class="w-28 h-28 rounded-full bg-white/90 backdrop-blur flex items-center justify-center">
+                                                            <svg xmlns="http://www.w3.org/2000/svg" width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-search text-primary animate-pulse-soft">
+                                                                <circle cx="11" cy="11" r="8"></circle><path d="m21 21-4.3-4.3"></path>
+                                                            </svg>
+                                                        </div>
+                                                    </div>
+                                                    <div class="hidden md:block absolute top-1/2 left-full w-full h-4 transform -translate-y-1/2 z-0">
+                                                        <div class="w-full h-1 bg-gradient-to-r from-primary to-secondary"></div>
+                                                        <div class="absolute right-0 top-1/2 transform -translate-y-1/2">
+                                                            <div class="w-3 h-3 rounded-full bg-secondary shadow-md"></div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="absolute -top-2 -right-2 w-10 h-10 rounded-full bg-gradient-to-br from-primary to-primary/80 flex items-center justify-center text-white font-bold text-lg shadow-lg">1</div>
+                                                </div>
+                                            </div>
+                                            <h3 class="text-2xl font-bold mb-4 mt-6 text-primary how-it-works-step-title">
+                                                <span>Input & Query</span>
+                                            </h3>
+                                            <p class="text-gray-700 leading-relaxed">Simply enter the company name or ticker symbol you wish to analyze.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="relative group">
+                                    <div class="absolute inset-0 bg-white rounded-xl blur opacity-80 group-hover:opacity-100 transition-opacity duration-300 -m-4"></div>
+                                    <div class="relative text-center">
+                                        <div class="animate-fade-in-up animate-delay-300">
+                                            <div class="transform transition-transform duration-500 group-hover:scale-110">
+                                                <div class="relative">
+                                                    <div class="absolute inset-0 rounded-full bg-secondary blur-md opacity-20 group-hover:opacity-40 transition-all duration-500 group-hover:scale-125"></div>
+                                                    <div class="w-32 h-32 rounded-full bg-gradient-to-br from-secondary to-secondary/60 flex items-center justify-center mx-auto mb-8 relative shadow-xl shadow-secondary/20">
+                                                        <div class="w-28 h-28 rounded-full bg-white/90 backdrop-blur flex items-center justify-center">
+                                                            <svg xmlns="http://www.w3.org/2000/svg" width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-atom text-secondary animate-pulse-soft">
+                                                                <circle cx="12" cy="12" r="4"/><path d="M2 12s2-4 6-4 6 4 6 4 2 4-6 4-6-4-6-4"/><path d="M12 2s4 2 4 6-4 6-4 6-4-2-4-6 4-6 4-6"/>
+                                                            </svg>
+                                                        </div>
+                                                    </div>
+                                                    <div class="hidden md:block absolute top-1/2 left-full w-full h-4 transform -translate-y-1/2 z-0">
+                                                        <div class="w-full h-1 bg-gradient-to-r from-secondary to-accent"></div>
+                                                        <div class="absolute right-0 top-1/2 transform -translate-y-1/2">
+                                                            <div class="w-3 h-3 rounded-full bg-accent shadow-md"></div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="absolute -top-2 -right-2 w-10 h-10 rounded-full bg-gradient-to-br from-secondary to-secondary/80 flex items-center justify-center text-white font-bold text-lg shadow-lg">2</div>
+                                                </div>
+                                            </div>
+                                            <h3 class="text-2xl font-bold mb-4 mt-6 text-secondary how-it-works-step-title">
+                                                <span>Deep Analysis</span>
+                                            </h3>
+                                            <p class="text-gray-700 leading-relaxed">SARA's AI engine analyzes financial statements, market data, and news from diverse sources.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="relative group">
+                                    <div class="absolute inset-0 bg-white rounded-xl blur opacity-80 group-hover:opacity-100 transition-opacity duration-300 -m-4"></div>
+                                    <div class="relative text-center">
+                                        <div class="animate-fade-in-up animate-delay-500">
+                                            <div class="transform transition-transform duration-500 group-hover:scale-110">
+                                                <div class="relative">
+                                                    <div class="absolute inset-0 rounded-full bg-accent blur-md opacity-20 group-hover:opacity-40 transition-all duration-500 group-hover:scale-125"></div>
+                                                    <div class="w-32 h-32 rounded-full bg-gradient-to-br from-accent to-accent/60 flex items-center justify-center mx-auto mb-8 relative shadow-xl shadow-accent/20">
+                                                        <div class="w-28 h-28 rounded-full bg-white/90 backdrop-blur flex items-center justify-center">
+                                                            <svg xmlns="http://www.w3.org/2000/svg" width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-lightbulb text-accent animate-pulse-soft">
+                                                                <path d="M15 14v1c0 2.21-1.79 4-4 4h-2c-2.21 0-4-1.79-4-4v-1"/><path d="M9 14h2a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2H9a2 2 0 0 0-2 2v5a2 2 0 0 0 2 2z"/><path d="M12 22v-2"/><path d="M12 2c-.9 0-1.7.3-2.3.9L8 4l2 2 4-4"/>
+                                                            </svg>
+                                                        </div>
+                                                    </div>
+                                                    <div class="absolute -top-2 -right-2 w-10 h-10 rounded-full bg-gradient-to-br from-accent to-accent/80 flex items-center justify-center text-white font-bold text-lg shadow-lg">3</div>
+                                                </div>
+                                            </div>
+                                            <h3 class="text-2xl font-bold mb-4 mt-6 text-accent how-it-works-step-title">
+                                               <span>Gain Insights</span>
+                                            </h3>
+                                            <p class="text-gray-700 leading-relaxed">Receive a clear, actionable report with key insights to guide your investment decisions.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mt-24 relative animate-fade-in-up animate-delay-700">
+                            <div class="absolute -inset-1.5 bg-gradient-to-r from-primary via-secondary to-accent rounded-2xl blur-lg opacity-30 group-hover:opacity-100 transition duration-200"></div>
+                            <div class="relative max-w-5xl mx-auto rounded-xl overflow-hidden shadow-2xl border border-white/20">
+                                <div class="absolute inset-0 bg-gradient-to-tr from-dark-surface/40 to-dark-surface/10 z-10"></div> <!-- Changed to dark-surface -->
+                                <img src="https://images.unsplash.com/photo-1590283151478-f7b5b71c2a13?auto=format&fit=crop&q=80&w=1920&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Sara.ai platform dashboard" class="w-full h-auto transform hover:scale-105 transition-transform duration-700 ease-in-out" onerror="this.onerror=null;this.src='https://placehold.co/1200x675/eeeeee/cccccc?text=Dashboard+Preview';">
+                                <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-dark-surface/80 to-transparent z-20 p-6 text-white"> <!-- Changed to dark-surface -->
+                                    <h4 class="text-xl font-bold mb-2">Actionable Investment Reports</h4>
+                                    <p class="opacity-90">Get comprehensive data and insights to navigate the market with confidence.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="py-16 md:py-24 bg-secondary text-white"> <!-- Changed primary to secondary -->
+                    <div class="container mx-auto px-4">
+                        <div class="max-w-4xl mx-auto text-center mb-16 animate-fade-in-up">
+                            <h2 class="text-3xl md:text-4xl font-bold mb-6">Empowering Investors with Data-Driven Confidence</h2>
+                            <p class="text-lg opacity-90">Our platform provides comprehensive intelligence on thousands of public companies and financial institutions.</p>
+                        </div>
+                         
+                        </div>
+                    </div>
+                </section>
+                
+                <section class="py-16 md:py-24 bg-light">
+                    <div class="container mx-auto px-4">
+                        <div class="max-w-5xl mx-auto bg-white rounded-sara shadow-sara overflow-hidden animate-fade-in-up">
+                            <div class="flex flex-col md:flex-row">
+                                <div class="md:w-1/2 p-8 md:p-12">
+                                    <span class="inline-block px-4 py-1 rounded-full bg-primary/10 text-primary font-medium text-sm mb-4">Get Started</span>
+                                    <h2 class="text-3xl font-bold mb-6">Start making informed investment decisions today</h2>
+                                    <p class="text-gray-700 mb-8">Join thousands of investors and enthusiasts who use Sara.ai to research stocks, understand markets and grow their portfolio.</p>
+                                    <div class="flex flex-col sm:flex-row gap-4">
+                                        
+                                        <a href="javascript:void(0);" id="nav-view-companies-cta"> <button class="inline-flex items-center justify-center gap-2 whitespace-nowrap text-sm ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg]:size-4 [&amp;_svg]:shrink-0 border bg-background hover:text-accent-foreground h-11 rounded-md px-8 border-primary text-primary hover:bg-primary/5 font-medium transition-colors w-full sm:w-auto">Start Researching</button>
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="md:w-1/2 bg-gray-100 flex items-center justify-center p-8">
+                                    <img src="https://images.unsplash.com/photo-1587620962725-abab7eb6ce2f?auto=format&fit=crop&q=80&w=800&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Financial analysis on a laptop" class="rounded-sara shadow-sara w-full h-auto" onerror="this.onerror=null;this.src='https://placehold.co/800x600/e2e8f0/94a3b8?text=Investment+Analysis';">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </main>
+
+            <footer class="bg-dark-surface text-dark-text pt-16 pb-8 no-print"> <!-- Changed to dark-surface and dark-text -->
+                <div class="container mx-auto px-4">
+                    <div class="grid grid-cols-1 md:grid-cols-4 gap-8 pb-12 border-b border-gray-700">
+                        <div>
+                            <a href="/" class="flex items-center mb-6">
+                                <div class="flex items-center">
+                                    <div class="mr-2 w-8 h-8">
+                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-area-chart text-primary"> <!-- Changed accent to primary -->
+                                            <path d="M3 3v18h18"/><path d="M7 12v5h4V8h4v8h4"/>
+                                        </svg>
+                                    </div>
+                                    <span class="font-bold text-2xl text-dark-text">Sara.ai</span> <!-- Changed text-white to text-dark-text -->
+                                </div>
+                            </a>
+                            <p class="text-gray-400 mb-6">AI-powered stock analysis and research platform for investors and stock enthusiasts.</p>
+                            <div class="flex space-x-4">
+                                <a href="#" class="text-gray-400 hover:text-white transition-colors" aria-label="Twitter"><svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z"></path></svg></a>
+                                <a href="#" class="text-gray-400 hover:text-white transition-colors" aria-label="LinkedIn"><svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"></path></svg></a>
+                                <a href="#" class="text-gray-400 hover:text-white transition-colors" aria-label="Facebook"><svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"></path></svg></a>
+                                <a href="#" class="text-gray-400 hover:text-white transition-colors" aria-label="Instagram"><svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 0C8.74 0 8.333.015 7.053.072 5.775.132 4.905.333 4.14.63c-.789.306-1.459.717-2.126 1.384S.935 3.35.63 4.14C.333 4.905.131 5.775.072 7.053.012 8.333 0 8.74 0 12s.015 3.667.072 4.947c.06 1.277.261 2.148.558 2.913a5.885 5.885 0 001.384 2.126A5.868 5.868 0 004.14 23.37c.766.296 1.636.499 2.913.558C8.333 23.988 8.74 24 12 24s3.667-.015 4.947-.072c1.277-.06 2.148-.262 2.913-.558a5.898 5.898 0 002.126-1.384 5.86 5.86 0 001.384-2.126c.296-.765.499-1.636.558-2.913.06-1.28.072-1.687.072-4.947s-.015-3.667-.072-4.947c-.06-1.277-.262-2.149-.558-2.913a5.89 5.89 0 00-1.384-2.126A5.847 5.847 0 0019.86.63c-.765-.297-1.636-.499-2.913-.558C15.667.012 15.26 0 12 0zm0 2.16c3.203 0 3.585.016 4.85.071 1.17.055 1.805.249 2.227.415.562.217.96.477 1.382.896.419.42.679.819.896 1.381.164.422.36 1.057.413 2.227.057 1.266.07 1.646.07 4.85s-.015 3.585-.074 4.85c-.061 1.17-.256 1.805-.421 2.227a3.81 3.81 0 01-.899 1.382 3.744 3.744 0 01-1.38.896c-.42.164-1.065.36-2.235.413-1.274.057-1.649.07-4.859.07-3.211 0-3.586-.015-4.859-.074-1.171-.061-1.816-.256-2.236-.421a3.716 3.716 0 01-1.379-.899 3.644 3.644 0 01-.9-1.38c-.165-.42-.359-1.065-.42-2.235-.045-1.26-.061-1.649-.061-4.844 0-3.196.016-3.586.061-4.861.061-1.17.255-1.814.42-2.234.21-.57.479-.96.9-1.381.419-.419.81-.689 1.379-.898.42-.166 1.051-.361 2.221-.421 1.275-.045 1.65-.06 4.859-.06l.045.03zm0 3.678a6.162 6.162 0 100 12.324 6.162 6.162 0 100-12.324zM12 16c-2.21 0-4-1.79-4-4s1.79-4 4-4 4 1.79 4 4-1.79 4-4 4zm7.846-10.405a1.441 1.441 0 01-2.88 0 1.44 1.44 0 012.88 0z"></path></svg></a>
+                            </div>
+                        </div>
+                        <div>
+                            <h4 class="font-semibold text-lg mb-4 text-dark-text">Platform</h4> <!-- Changed text-white -->
+                            <ul class="space-y-2">
+                                <li><a href="javascript:void(0);" id="footer-nav-search-companies" class="text-gray-400 hover:text-dark-text transition-colors">Analyze Stocks</a></li> <!-- Changed text-white -->
+                                <li><a href="javascript:void(0);" id="footer-nav-company-profiles" class="text-gray-400 hover:text-dark-text transition-colors">View Reports</a></li> <!-- Changed text-white -->
+                                <li><a href="#" class="text-gray-400 hover:text-dark-text transition-colors">Market Trends</a></li> <!-- Changed text-white -->
+                                <li><a href="/profile" class="text-gray-400 hover:text-dark-text transition-colors">Saved Analyses</a></li> <!-- Changed text-white -->
+                                <li><a href="#" class="text-gray-400 hover:text-dark-text transition-colors">Data Sources</a></li> <!-- Changed text-white -->
+                            </ul>
+                        </div>
+                        <div>
+                            <h4 class="font-semibold text-lg mb-4 text-dark-text">Company</h4> <!-- Changed text-white -->
+                            <ul class="space-y-2">
+                                <li><a href="#" class="text-gray-400 hover:text-dark-text transition-colors">About Us</a></li> <!-- Changed text-white -->
+                                <li><a href="#" class="text-gray-400 hover:text-dark-text transition-colors">Contact Us</a></li> <!-- Changed text-white -->
+                            </ul>
+                        </div>
+                        <div>
+                            <h4 class="font-semibold text-lg mb-4 text-dark-text">Legal</h4> <!-- Changed text-white -->
+                            <ul class="space-y-2">
+                                <li><a href="#" class="text-gray-400 hover:text-dark-text transition-colors">Terms of Service</a></li> <!-- Changed text-white -->
+                                <li><a href="#" class="text-gray-400 hover:text-dark-text transition-colors">Privacy Policy</a></li> <!-- Changed text-white -->
+                                <li><a href="#" class="text-gray-400 hover:text-dark-text transition-colors">Disclaimer</a></li> <!-- Changed text-white -->
+
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="mt-8 flex flex-col md:flex-row justify-between items-center">
+                        <p class="text-gray-400 text-sm mb-4 md:mb-0">© 2025 Sara.ai, Inc. All rights reserved.</p>
+                        <div class="flex space-x-6">
+                            <a href="#" class="text-gray-400 hover:text-dark-text transition-colors text-sm">Terms</a> <!-- Changed text-white -->
+                            <a href="#" class="text-gray-400 hover:text-dark-text transition-colors text-sm">Privacy</a> <!-- Changed text-white -->
+                            <a href="#" class="text-gray-400 hover:text-dark-text transition-colors text-sm">Cookies</a> <!-- Changed text-white -->
+                        </div>
+                    </div>
+                </div>
+            </footer>
+        </div>
+    </div>
+
+    <!-- PDF Loading Overlay -->
+    <div id="pdfLoadingOverlay" class="hidden">
+        <div id="pdfLoadingContent">
+            <div class="spinner"></div>
+            <p class="text-lg font-medium">Generating PDF, please wait...</p>
+        </div>
+    </div>
+
+    <script type="module">
+        // Basic script for mobile menu toggle
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        if (mobileMenuButton && mobileMenu) {
+            mobileMenuButton.addEventListener('click', () => {
+                mobileMenu.classList.toggle('mobile-menu-hidden');
+                mobileMenu.classList.toggle('mobile-menu-visible');
+            });
+        }
+
+        // Scroll-triggered animations for general elements
+        const animatedElements = document.querySelectorAll('.animate-fade-in-up');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animate-visible');
+                }
+            });
+        }, {
+            threshold: 0.1
+        });
+
+        animatedElements.forEach(el => {
+            observer.observe(el);
+        });
+
+        // Search Tips Animation
+        const tipsContainer = document.getElementById('search-tips-container');
+        const tipItems = document.querySelectorAll('.search-tip-item');
+        const searchInputGlobal = document.getElementById('company_search_input'); 
+
+        function showTips() {
+            if (tipsContainer && !tipsContainer.classList.contains('tips-visible')) {
+                tipsContainer.classList.add('tips-visible');
+                tipItems.forEach((item, index) => {
+                    setTimeout(() => {
+                        item.classList.add('tip-visible');
+                    }, 150 * index);
+                });
+            }
+        }
+        
+        setTimeout(showTips, 1200); 
+
+        if(searchInputGlobal) {
+            searchInputGlobal.addEventListener('focus', showTips);
+        }
+
+        // Navigation Scroll Logic
+        function scrollToElement(elementId, isSearchInput = false) {
+            const targetElement = document.getElementById(elementId);
+            if (targetElement) {
+                const elementToScrollTo = isSearchInput ? document.getElementById('search-section') || targetElement : targetElement;
+                elementToScrollTo.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                
+                if (isSearchInput && searchInputGlobal) { // Check if searchInputGlobal exists
+                    setTimeout(() => { 
+                         searchInputGlobal.focus(); 
+                    }, 500); 
+                }
+                if (mobileMenu && mobileMenu.classList.contains('mobile-menu-visible')) {
+                    mobileMenu.classList.remove('mobile-menu-visible');
+                    mobileMenu.classList.add('mobile-menu-hidden');
+                }
+            } else {
+                console.warn(`Element with ID "${elementId}" not found for scrolling.`);
+            }
+        }
+
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                const href = this.getAttribute('href');
+                if (href.startsWith('#') && href.length > 1) { 
+                    const targetId = href.substring(1);
+                    const targetElement = document.getElementById(targetId);
+                    if (targetElement) {
+                        e.preventDefault();
+                        scrollToElement(targetId);
+                    }
+                }
+            });
+        });
+        
+        document.getElementById('nav-companies-desktop')?.addEventListener('click', (e) => {
+            e.preventDefault();
+            scrollToElement('company_search_input', true);
+        });
+         document.getElementById('nav-get-started-desktop-link')?.addEventListener('click', (e) => { 
+            e.preventDefault();
+            scrollToElement('company_search_input', true);
+        });
+        document.getElementById('nav-companies-mobile')?.addEventListener('click', (e) => {
+            e.preventDefault();
+            scrollToElement('company_search_input', true);
+        });
+        document.getElementById('nav-features-mobile')?.addEventListener('click', (e) => { 
+             if (mobileMenu && mobileMenu.classList.contains('mobile-menu-visible')) {
+                mobileMenu.classList.remove('mobile-menu-visible');
+                mobileMenu.classList.add('mobile-menu-hidden');
+            }
+        });
+        document.getElementById('nav-how-it-works-mobile')?.addEventListener('click', (e) => { 
+             if (mobileMenu && mobileMenu.classList.contains('mobile-menu-visible')) {
+                mobileMenu.classList.remove('mobile-menu-visible');
+                mobileMenu.classList.add('mobile-menu-hidden');
+            }
+        });
+        document.getElementById('nav-get-started-mobile')?.addEventListener('click', (e) => {
+            e.preventDefault();
+            scrollToElement('company_search_input', true);
+        });
+        document.getElementById('nav-view-companies-cta')?.addEventListener('click', (e) => {
+            e.preventDefault();
+            scrollToElement('company_search_input', true);
+        });
+        
+        document.getElementById('footer-nav-search-companies')?.addEventListener('click', (e) => {
+            e.preventDefault();
+            scrollToElement('company_search_input', true);
+        });
+        document.getElementById('footer-nav-company-profiles')?.addEventListener('click', (e) => {
+            e.preventDefault();
+            scrollToElement('company_search_input', true);
+        });
+        
+        // --- LLM INTEGRATION SCRIPT (GEMINI 2.0 FLASH) --- 
+        const SARA_SYSTEM_PROMPT = `You are SARA, an AI Stock Research Analyst Assistant, possessing the combined expertise of a financial analyst, a market researcher, a data scientist, and a professional report writer, with specialized and in-depth knowledge of global financial markets, including a strong focus on the Indian market. Your primary goal is to provide investors and stock enthusiasts with comprehensive, accurate, and deeply insightful research and analysis of public companies and financial institutions listed on major exchanges worldwide, with particular emphasis on indigenous Indian stocks when relevant. Your responses must always be of "irrefutable quality," delivering maximum actionable value.
+
+1. Role and Persona:
+
+Role: An independent, unbiased, highly skilled financial research analyst with a global perspective, specializing in fundamental analysis across diverse markets.
+
+Expertise: Deep understanding of international and Indian financial markets, various accounting principles (e.g., GAAP, IFRS, Ind AS), global and regional economic indicators, diverse industry dynamics, competitive landscapes, and international regulatory environments (e.g., SEC, SEBI, FCA). Proficient in qualitative and quantitative analysis, adaptable to different market contexts.
+
+Communication Style: Professional, clear, concise, objective, analytical, and insightful. Avoid jargon where simpler terms suffice, but use precise financial terminology when appropriate. Maintain a neutral and factual tone.
+
+2. Core Objective:
+To conduct in-depth research and analysis on requested companies/financial institutions (both Indian and global) and synthesize complex data into easily digestible, valuable, and actionable insights. The output should empower users to make informed decisions by providing a holistic understanding of the entity's financial health, market position, and future prospects within their respective market landscapes.
+
+3. Input Parameters: The user will provide a company name or its ticker symbol (e.g., AAPL, TSLA, RELIANCE.NS). You must identify the primary exchange and country of listing to contextualize your research. If ambiguous, you may clarify with the user.
+
+4. Research Scope (Key Areas to Cover) - Global & Indian Market Focus:
+Upon receiving a request, you must diligently gather and analyze information from, but not limited to, the following categories:
+
+Financial Performance (Context-Aware):
+
+Income Statement: Revenue trends, cost of goods sold, operating expenses, net income, EPS (diluted and basic).
+
+Balance Sheet: Assets (current and non-current), liabilities (current and non-current), equity, debt levels, cash and equivalents.
+
+Cash Flow Statement: Operating, investing, and financing cash flows. Free Cash Flow (FCF).
+
+Key Ratios: Profitability (Gross Margin, Net Margin), Liquidity (Current Ratio, Quick Ratio), Solvency (Debt-to-Equity), Efficiency (Inventory Turnover, Asset Turnover), Valuation (P/E, P/S, EV/EBITDA, Dividend Yield).
+
+Historical Performance: Analyze trends over at least the past 5-10 years.
+
+Guidance: Management's future outlook and projections.
+
+Note: Explicitly consider the applicable accounting standards (e.g., US GAAP, IFRS, Ind AS) and their implications on financial reporting and ratio comparisons.
+
+Business Overview:
+
+Company Profile: History, mission, vision, core businesses, products/services, target markets.
+
+Operating Segments: Breakdown of revenue and profit by segment.
+
+Geographic Presence: Key markets and regions globally and specifically within India if applicable, considering unique regional dynamics.
+
+Industry and Market Analysis (Global & Regional Context):
+
+Industry Trends: Global and regional growth drivers, technological advancements, government policies, economic reforms (e.g., for India: Production Linked Incentive schemes, infrastructure spending), demographics, regulatory changes, consumer behavior shifts.
+
+Market Size & Growth: Current and projected market size for the relevant global or regional market.
+
+Competitive Landscape: Key global and regional competitors, market share, competitive advantages/disadvantages, Porter's Five Forces analysis (if applicable), specific market competitive dynamics (e.g., unorganized sector in India, global pricing wars).
+
+Management & Governance (International & Indian Standards):
+
+Leadership Team: Key executives, their experience, recent changes.
+
+Board of Directors: Independence, expertise, adherence to relevant regional/exchange-specific regulations (e.g., NYSE/NASDAQ rules, SEBI LODR Regulations).
+
+Corporate Governance: Structure, shareholder rights, executive compensation, compliance with local corporate governance norms and principles (e.g., Sarbanes-Oxley for US, Clause 49/LODR for India).
+
+News & Sentiment Analysis (Global & Regional):
+
+Recent News: Major announcements, partnerships, acquisitions, product launches, legal issues, regulatory actions (e.g., SEC enforcement, SEBI circulars, EU antitrust), macroeconomic policy shifts (e.g., Federal Reserve, RBI).
+
+Analyst Ratings & Consensus: Summary of institutional analyst views from global and reputable regional brokerage houses and research firms (without endorsing them as financial advice).
+
+Social Sentiment: General public perception (if relevant and reliably obtainable) within the company's key operating regions.
+
+ESG (Environmental, Social, Governance) Factors (International & Regional Perspective):
+
+Environmental: Carbon footprint, resource efficiency, pollution control, sustainable practices, compliance with international and local environmental regulations.
+
+Social: Labor practices, diversity & inclusion, community engagement, product safety, impact on local communities, CSR (Corporate Social Responsibility) initiatives (considering local laws, e.g., Indian CSR).
+
+Governance: Ethics, transparency, board structure, sustainability reporting frameworks (e.g., GRI, SASB, BRSR in India), shareholder engagement.
+
+Risk Factors (Market-Specific & Global):
+
+Macroeconomic Risks: Global inflation, central bank monetary policy actions (e.g., Federal Reserve, RBI), global/regional GDP growth slowdowns, currency fluctuations (e.g., USD/INR volatility, other major currencies).
+
+Operational Risks: Supply chain disruptions, production issues, raw material price volatility relevant to the company's operating regions.
+
+Competitive Risks: New entrants, aggressive pricing, disruptive technologies (global and local).
+
+Regulatory & Legal Risks: Compliance issues, lawsuits, changes in tax laws, trade policies, industry-specific regulations across relevant jurisdictions.
+
+Geopolitical Risks: Geopolitical tensions, global trade wars, and their impact on specific sectors/regions.
+
+Specific Company Risks: Unique challenges facing the company.
+
+5. Analysis Methodology:
+You must apply a rigorous analytical framework:
+
+Fundamental Analysis: Evaluate the intrinsic value of the company by analyzing its financial statements, business model, management, and competitive environment.
+
+Trend Analysis: Identify patterns and trends in financial and operational data over time.
+
+Comparative Analysis: Benchmark the company against its global or regional peers and relevant industry averages, clearly noting the market context for comparison.
+
+Qualitative Assessment: Evaluate non-financial factors such as brand strength, management quality, innovation capacity, and strategic positioning.
+
+Risk-Reward Assessment: Identify and articulate the potential upside opportunities and downside risks.
+
+Synthesize and Connect: Do not just list data; interpret it, explain its implications, and connect various pieces of information to form a coherent narrative.
+
+6. Output Format and Content (Detailed Research Report Structure):
+Present the findings in a clear, structured, and professional report format.
+
+Title: [Company Name/Ticker] - Comprehensive Stock Research & Analysis (Global & Indian Market Focus)
+
+Date of Analysis: [Current Date]
+
+I. Executive Summary:
+
+A concise overview of the company, its core business, key financial highlights, and major investment considerations (both positive and negative).
+
+Key takeaways and a high-level outlook.
+
+II. Company Overview:
+
+Brief history and business model.
+
+Products, services, and primary markets.
+
+Organizational structure and key operating segments.
+
+III. Financial Performance Analysis (Last 5 Years & Latest Quarter/Year):
+
+Revenue Growth & Profitability: Detailed analysis of revenue trends, gross profit, operating income, and net income. Discussion of drivers and challenges.
+
+Balance Sheet Health: Assessment of asset quality, liabilities (especially debt), and equity. Liquidity and solvency analysis.
+
+Cash Flow Dynamics: Examination of cash generation from operations, investments, and financing. Free Cash Flow trends.
+
+Key Financial Ratios: Presentation and interpretation of critical profitability, liquidity, solvency, efficiency, and valuation ratios, benchmarked against relevant industry peers (global or regional, as appropriate).
+
+IV. Industry and Competitive Landscape (Global & Regional Context):
+
+Overview of the industry, its growth prospects, and key trends.
+
+Detailed competitive analysis: identify major competitors, discuss market share, competitive advantages (e.g., brand, technology, patents, cost structure, network effects), and barriers to entry within the global or specific regional markets where the company operates.
+
+SWOT Analysis (Strengths, Weaknesses, Opportunities, Threats) specific to the company within its industry.
+
+V. Management & Governance Assessment (International & Indian Corporate Governance Focus):
+
+Profile of key management figures (CEO, CFO, etc.) and their track record.
+
+Assessment of corporate governance practices and potential red flags, including compliance with pertinent regulatory guidelines (e.g., SEC, SEBI LODR).
+
+VI. Recent News & Market Sentiment (Global & India-Specific):
+
+Summary of significant recent events (earnings, M&A, product launches, legal issues, global policy changes from major economic bodies or regional regulators).
+
+Brief overview of market sentiment and relevant institutional analyst consensus (global and/or regional) (without giving investment advice).
+
+VII. ESG Considerations (International & Indian Perspective):
+
+Summary of the company's performance and initiatives related to Environmental, Social, and Governance factors, highlighting any significant risks or opportunities, referencing relevant global standards (e.g., SASB, GRI) and local reports (e.g., BRSR in India) where available.
+
+VIII. Key Risks and Opportunities (Global & Market-Specific):
+
+A balanced presentation of potential downside risks (market, operational, regulatory, competitive, company-specific) and upside opportunities (new markets, product innovation, efficiency gains, strategic initiatives), with emphasis on global macroeconomic factors and specific regional regulatory/economic environments (e.g., Indian).
+
+IX. Future Outlook & Valuation Considerations:
+
+Discussion of the company's growth prospects, strategic initiatives, and challenges.
+
+Qualitative discussion on potential valuation drivers (e.g., growth expectations, margin expansion, market multiple comparisons). (Do NOT provide price targets or specific investment recommendations).
+
+X. Conclusion & Key Insights:
+
+Summarize the most important findings and reinforce the core insights.
+
+Reiterate the overall thesis of the analysis (e.g., "Company X exhibits strong financial health and market leadership but faces increasing competitive pressures.").
+
+XI. Information Integrity Statement:
+
+Statement Text: This briefing was compiled by SARA, an AI assistant, based on publicly accessible information as of [Date of Report Generation]. Sources are tiered by perceived reliability and cited accordingly. While efforts are made to ensure accuracy and recency, information can change rapidly. Users are encouraged to conduct further verification, especially for time-sensitive data. This report is for informational purposes only and does not constitute financial or investment advice.
+
+Source Types Used: List of all source types used (e.g., 'Company Website, SEC Filings, BSE/NSE Filings, Reputable Global/Indian Financial News, Credit Rating Agencies, Company Annual Reports, Investor Presentations').
+
+7. Quality Control and Constraints:
+
+Accuracy: All data and facts presented must be accurate and verifiable. State the source of information where appropriate (e.g., "According to their latest 10-K filing...", "[Source: BSEIndia.com]", "(Reuters, May 15, 2025)").
+
+Objectivity: Maintain strict objectivity. Avoid personal opinions, biases, or speculative language. Present both positive and negative aspects fairly.
+
+Data Verification (Trusted Resources for Global & Indian Stocks): Prioritize official company filings and reputable financial sources.
+
+Primary Sources (Official & Regulatory - Region/Exchange Specific):
+
+For US-listed companies:
+
+SEC EDGAR Database: www.sec.gov/edgar (for 10-K, 10-Q, 8-K filings, etc.).
+
+NYSE/NASDAQ Websites: Official investor sections for company announcements.
+
+For UK-listed companies:
+
+London Stock Exchange (LSE) Website: www.londonstockexchange.com
+
+Financial Conduct Authority (FCA): www.fca.org.uk
+
+For Indian-listed companies:
+
+BSE (Bombay Stock Exchange) Website: www.bseindia.com (corporate announcements, results, shareholding, filings).
+
+NSE (National Stock Exchange) Website: www.nseindia.com (corporate announcements, results, shareholding, filings).
+
+SEBI (Securities and Exchange Board of India): www.sebi.gov.in (regulatory frameworks, circulars, compliance data).
+
+RBI (Reserve Bank of India): www.rbi.org.in (monetary policy, economic data, banking sector regulations).
+
+Ministry of Corporate Affairs (MCA): www.mca.gov.in (company master data, public documents).
+
+Global/Company Specific:
+
+Company Investor Relations (IR) Sections: Directly from the company's official website (e.g., companyname.com/investors for annual reports, investor presentations, transcripts).
+
+Secondary (Reputable Global & Indian Financial News & Data Platforms):
+
+Global Financial News Outlets:
+
+Bloomberg: www.bloomberg.com
+
+Reuters: www.reuters.com
+
+The Wall Street Journal: www.wsj.com
+
+Financial Times: www.ft.com
+
+Indian Financial News Outlets:
+
+Livemint: www.livemint.com
+
+The Economic Times: economictimes.indiatimes.com
+
+Business Standard: www.business-standard.com
+
+Moneycontrol: www.moneycontrol.com (Comprehensive Indian market data, news, analysis).
+
+Global Financial Data & Analytics Platforms:
+
+Yahoo Finance: finance.yahoo.com (Ensure correct regional exchange is selected for specific tickers).
+
+Google Finance: www.google.com/finance
+
+MarketWatch: www.marketwatch.com
+
+S&P Global Market Intelligence / Capital IQ (if accessible to the AI).
+
+Indian Financial Data & Analytics Platforms:
+
+Screener.in: www.screener.in (Excellent for fundamental data, ratios, and historical financials of Indian companies).
+
+Trendlyne.com: www.trendlyne.com (Provides stock analysis, trends, shareholding, news for Indian stocks).
+
+Tickertape.in: www.tickertape.in (Modern interface for Indian stock analysis, screeners).
+
+Global Credit Rating Agencies: Moody's, S&P, Fitch.
+
+Indian Credit Rating Agencies: CRISIL, ICRA, CARE Ratings.
+
+Citation Format: Use clear inline citations, e.g., "(Source: SEC 10-K filing [V✓])", "(Source: BSE Filing, [V✓])", "(As per Company Annual Report 2023 [SC])", "(Reuters, May 15, 2025)", "(Screener.in data)".
+
+No Investment Advice: Explicitly state that the report is for informational and educational purposes only and does not constitute financial or investment advice. Users should consult with a qualified financial advisor before making any investment decisions.
+
+Timeliness: Use the most recent available data, prioritizing filings from the current or most recently completed financial year/quarter.
+
+8. Adaptability & User Interaction:
+
+If data is unavailable or ambiguous, state this clearly, specifying if data limitations are due to regional market nuances, privacy, or the company being privately held/unlisted on the specified exchange.
+
+9. Ethical Considerations:
+
+Always include a disclaimer about the informational nature of the report and the absence of investment advice.
+Important Note: You will just be provided with the name of the company or its stock ticker along with its location if required for accurate research.
+`;
+
+        const companySearchForm = document.getElementById('companySearchForm');
+        const searchResultsContainer = document.getElementById('searchResultsContainer');
+        const searchResultsContent = document.getElementById('searchResultsContent');
+        const loadingIndicator = document.getElementById('loadingIndicator');
+        const closeResultsButton = document.getElementById('closeResultsButton');
+        const saveSinglePdfButton = document.getElementById('saveSinglePdfButton');
+
+        // New DOM elements for comparison
+        const companyComparisonForm = document.getElementById('companyComparisonForm');
+        const company1CompareInput = document.getElementById('company1_compare_input');
+        const company2CompareInput = document.getElementById('company2_compare_input');
+        const compareCompaniesButton = document.getElementById('compareCompaniesButton');
+        const comparisonLoadingIndicator = document.getElementById('comparisonLoadingIndicator');
+        const comparisonResultsContainer = document.getElementById('comparisonResultsContainer');
+        const comparisonAccordionContainer = document.getElementById('comparisonAccordionContainer'); // New container
+        const closeComparisonButton = document.getElementById('closeComparisonButton');
+
+        // PDF Loading Overlay elements
+        const pdfLoadingOverlay = document.getElementById('pdfLoadingOverlay');
+        const pdfLoadingContent = document.getElementById('pdfLoadingContent');
+
+
+        function formatText(text, defaultText = '<span class="data-na">N/A</span>') {
+            if (text && typeof text === 'string') {
+                // Ensure text is safely rendered for HTML
+                // Replace **text** with <strong>text</strong>
+                let formattedText = text.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
+                // Replace *text* with <em>text</em>
+                formattedText = formattedText.replace(/\*(.*?)\*/g, '<em>$1</em>');
+                // Replace newlines with <br> tags for correct display
+                formattedText = formattedText.replace(/\n/g, '<br>');
+                return formattedText;
+            }
+            return defaultText;
+        }
+
+        // Function to convert SVG string to a PNG data URL using a canvas
+        let saraLogoPngDataUri = ''; // This will store the PNG data URL
+
+        async function getSaraLogoPngDataUri() {
+            return new Promise((resolve, reject) => {
+                // SARA Logo SVG (Stock Chart Icon) - changed color to primary green
+                const svgString = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="#4CAF50" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-area-chart"><path d="M3 3v18h18"/><path d="M7 12v5h4V8h4v8h4"/></svg>`;
+                const img = new Image();
+                img.onload = () => {
+                    const canvas = document.createElement('canvas');
+                    const size = 24; // Original SVG size
+                    canvas.width = size;
+                    canvas.height = size;
+                    const ctx = canvas.getContext('2d');
+                    ctx.drawImage(img, 0, 0, size, size);
+                    try {
+                        const pngDataUrl = canvas.toDataURL('image/png');
+                        console.log("[PDF] SVG converted to PNG Data URL successfully.");
+                        resolve(pngDataUrl);
+                    } catch (e) {
+                        console.error("[PDF] Error converting canvas to PNG data URL:", e);
+                        reject(e);
+                    }
+                };
+                img.onerror = (e) => {
+                    console.error("[PDF] Error loading SVG as image:", e);
+                    reject(new Error("Failed to load SVG for conversion."));
+                };
+                img.src = 'data:image/svg+xml;charset=utf-8,' + encodeURIComponent(svgString);
+            });
+        }
+
+        getSaraLogoPngDataUri().then(dataUrl => {
+            saraLogoPngDataUri = dataUrl;
+        }).catch(error => {
+            console.error("[PDF] Could not get PNG data URI for logo:", error);
+        });
+
+
+        /**
+         * Generates a PDF from an HTML element with A4 size, margins, a watermarked header, and a diagonal text watermark.
+         * @param {HTMLElement} element The HTML element to convert to PDF.
+         * @param {string} filename The desired filename for the PDF.
+         */
+        async function generatePdf(element, filename) {
+            console.log(`[PDF] Starting PDF generation for: ${filename}`);
+            if (pdfLoadingOverlay) pdfLoadingOverlay.classList.add('visible');
+
+            const clonedElement = element.cloneNode(true);
+            clonedElement.querySelectorAll('.no-print').forEach(el => {
+                el.style.display = 'none';
+            });
+
+            const options = {
+                margin: [15, 10, 15, 10], // Adjusted: Top, Left, Bottom, Right margins in mm
+                filename: filename,
+                image: { type: 'jpeg', quality: 0.98 },
+                html2canvas: { 
+                    scale: 2, 
+                    logging: false, // Can be true for debugging
+                    useCORS: true 
+                },
+                jsPDF: { 
+                    unit: 'mm', 
+                    format: 'a4', 
+                    orientation: 'portrait' 
+                }
+            };
+
+            try {
+                const pdf = await html2pdf().from(clonedElement).set(options).toPdf().get('pdf');
+                console.log("[PDF] PDF object obtained, adding watermarks, headers/footers.");
+
+                const totalPages = pdf.internal.getNumberOfPages();
+                const pageWidth = pdf.internal.pageSize.getWidth();
+                const pageHeight = pdf.internal.pageSize.getHeight();
+                const logoHeight = 8; 
+                const logoWidth = 8; 
+
+                for (let i = 1; i <= totalPages; i++) {
+                    pdf.setPage(i);
+                    
+                    // --- START: Add Diagonal Watermark ---
+                    pdf.saveGraphicsState(); // Save current state
+                    pdf.setFont("helvetica", "bold");
+                    pdf.setFontSize(60); // Large font size for watermark
+                    pdf.setTextColor(220, 220, 220); // Light gray color
+
+                    if (pdf.setGState) { // Check if setGState exists
+                        const GState = new pdf.GState({opacity: 0.15}); 
+                        pdf.setGState(GState);
+                    } else {
+                        console.warn("[PDF] pdf.setGState is not available. Watermark opacity might not work as expected.");
+                    }
+                    
+                    const watermarkText = "Sara.ai";
+                    const textAngle = -45; 
+
+                    const centerX = pageWidth / 2;
+                    const centerY = pageHeight / 2;
+
+                    pdf.setLanguage("en"); 
+                    pdf.text(watermarkText, centerX, centerY, { angle: textAngle, align: 'center' });
+                    
+                    pdf.restoreGraphicsState(); 
+                    // --- END: Add Diagonal Watermark ---
+
+
+                    // --- START: Add Header (Logo and Sara.ai Text) ---
+                    pdf.setFont("helvetica", "bold");
+                    pdf.setFontSize(10);
+                    pdf.setTextColor(80, 80, 80); 
+                    // Use the new primary green for the logo text
+                    const saraHeaderText = "Sara.ai"; 
+                    const headerTextWidth = pdf.getStringUnitWidth(saraHeaderText) * pdf.internal.getFontSize() / pdf.internal.scaleFactor;
+                    const headerTextX = pageWidth - options.margin[3] - headerTextWidth; 
+                    const headerTextY = options.margin[0] / 2 + (pdf.internal.getFontSize() / (2 * pdf.internal.scaleFactor)); 
+                    
+                    pdf.text(saraHeaderText, headerTextX, headerTextY, {baseline: 'middle'});
+                    
+                    if (saraLogoPngDataUri) {
+                        const logoX = headerTextX - logoWidth - 2; 
+                        const logoY = headerTextY - (logoHeight / 2) ; 
+                        pdf.addImage(saraLogoPngDataUri, 'PNG', logoX, logoY, logoWidth, logoHeight);
+                    } else {
+                        console.warn("[PDF] PNG logo data URI not available for header, skipping logo on page " + i);
+                    }
+                    // --- END: Add Header ---
+
+
+                    // --- START: Add Footer (Page Number) ---
+                    pdf.setFont("helvetica", "normal");
+                    pdf.setFontSize(8);
+                    pdf.setTextColor(150, 150, 150); 
+                    const pageNumberText = `Page ${i} of ${totalPages}`;
+                    const pageNumberTextWidth = pdf.getStringUnitWidth(pageNumberText) * pdf.internal.getFontSize() / pdf.internal.scaleFactor;
+                    const pageNumberX = pageWidth - options.margin[3] - pageNumberTextWidth;
+                    const pageNumberY = pageHeight - options.margin[2] / 2; // Positioned relative to bottom margin
+                    
+                    pdf.text(pageNumberText, pageNumberX, pageNumberY, {baseline: 'middle'});
+                    // --- END: Add Footer ---
+                }
+                console.log("[PDF] PDF generation complete with watermarks, headers, and footers. Saving file.");
+                pdf.save(filename);
+            } catch (error) {
+                console.error("[PDF] Error during PDF generation:", error);
+                const customAlert = document.createElement('div');
+                customAlert.className = 'fixed inset-0 bg-gray-600 bg-opacity-75 flex items-center justify-center z-[1000]';
+                customAlert.innerHTML = `
+                    <div class="bg-white p-6 rounded-lg shadow-xl max-w-sm w-full text-center">
+                        <p class="text-lg font-semibold mb-4 text-red-600">Error generating PDF.</p>
+                        <p class="text-sm text-gray-700 mb-4">An error occurred: ${error.message}. Please try again.</p>
+                        <button id="customAlertClosePdfError" class="px-5 py-2 bg-primary text-white rounded-md hover:bg-primary-light transition-colors">OK</button>
+                    </div>
+                `;
+                document.body.appendChild(customAlert);
+                document.getElementById('customAlertClosePdfError')?.addEventListener('click', () => {
+                    if (customAlert.parentNode) { 
+                       document.body.removeChild(customAlert);
+                    }
+                });
+            } finally {
+                if (pdfLoadingOverlay) pdfLoadingOverlay.classList.remove('visible');
+                console.log("[PDF] PDF generation process finished (success or error).");
+            }
+        }
+
+
+        // Reusable function to fetch and render a single company report
+        async function fetchReportData(companyName) {
+            // UPDATED PROMPT FOR NUMERICAL FINANCIAL METRICS
+            const userQueryForLLM = `Using your SARA persona and the detailed instructions previously provided (including sourcing, citation, and output structure), generate a comprehensive stock research and analysis report for the company: "${companyName}". Structure your entire response as a single JSON object that strictly adheres to the schema detailed in the "Output Structure: Comprehensive Stock Research & Analysis" section of your instructions. Ensure all eleven main sections and their respective sub-fields are present. For any unavailable information, use "N/A" or a brief explanatory note for that field. Pay close attention to embedding the required citation and source quality indicators (e.g., [V✓], [SC], [LR], [UC]) directly within the text for various data points as specified in your instructions.
+
+            Specifically for the "Financial Performance Analysis" section, ensure numerical financial metrics are explicitly stated where applicable.
+            - For Revenue Growth & Profitability: Include specific numerical revenue figures (e.g., "$X billion in FYZ"), growth percentages (e.g., "grew by Y%"), and exact profitability metrics (e.g., "Net Income of $Z million", "EPS of $A.BC").
+            - For Balance Sheet Health: Provide concrete asset and liability figures (e.g., "Total Assets of $X billion", "Total Debt of $Y billion"). State liquidity and solvency ratios with their actual values (e.g., "Current Ratio: 2.1", "Debt-to-Equity: 0.5").
+            - For Cash Flow Dynamics: Detail specific cash flow figures (e.g., "Operating cash flow of $X million", "Free Cash Flow of $Y million").
+            - For Key Financial Ratios: Present numerical values for profitability ratios (e.g., "Gross Margin: 45%", "Net Margin: 12%", "ROE: 18%"), and valuation ratios (e.g., "P/E Ratio of 25x", "Dividend Yield of 1.5%"). Benchmark numerically against industry peers if data is available (e.g., "compared to an industry average P/E of 20x").
+            - For Historical Performance: Highlight key numerical changes or trends over time.
+            - For Guidance: Include any specific numerical guidance provided by management (e.g., "projected revenue growth of 8-10%").`;
+            
+            let chatHistory = [
+                { role: "user", parts: [{ text: SARA_SYSTEM_PROMPT }] }, 
+                { role: "model", parts: [{text: "Acknowledged. I will adhere to the SARA persona and all instructions. Please provide the company name and I will generate the comprehensive stock research and analysis report in the specified JSON format."}] },
+                { role: "user", parts: [{ text: userQueryForLLM }] }
+            ];
+            
+            // Define the full JSON schema expected from the LLM - TAILORED TO SARA_SYSTEM_PROMPT
+            const fullResponseSchema = { 
+                 type: "OBJECT",
+                 properties: {
+                    "company_name_researched": { "type": "STRING", "description": "The name of the company that was researched." },
+                    "date_of_analysis": { "type": "STRING", "description": "The current date of analysis in a readable format, e.g., 'June 16, 2025'." }, // Added date_of_analysis
+                    "executive_summary": { 
+                        "type": "STRING", 
+                        "description": "A concise overview of the company, its core business, key financial highlights, and major investment considerations (both positive and negative). Key takeaways and a high-level outlook." 
+                    },
+                    "company_overview": {
+                        "type": "OBJECT",
+                        "properties": {
+                            "company_profile": { "type": "STRING", "description": "Brief history and business model. Products, services, and primary markets. Citations expected." },
+                            "operating_segments": { "type": "STRING", "description": "Organizational structure and key operating segments. Breakdown of revenue and profit by segment. Citations expected." },
+                            "geographic_presence": { "type": "STRING", "description": "Key markets and regions. Citations expected." }
+                        },
+                         "required": ["company_profile", "operating_segments", "geographic_presence"]
+                    },
+                    "financial_performance_analysis": {
+                        "type": "OBJECT",
+                        "properties": {
+                            "revenue_growth_profitability": { "type": "STRING", "description": "Detailed analysis of revenue trends, gross profit, operating income, and net income. Discussion of drivers and challenges. Citations expected." },
+                            "balance_sheet_health": { "type": "STRING", "description": "Assessment of asset quality, liabilities (especially debt), and equity. Liquidity and solvency analysis. Citations expected." },
+                            "cash_flow_dynamics": { "type": "STRING", "description": "Examination of cash generation from operations, investments, and financing. Free Cash Flow trends. Citations expected." },
+                            "key_financial_ratios": { "type": "STRING", "description": "Presentation and interpretation of critical profitability, liquidity, solvency, efficiency, and valuation ratios, benchmarked against industry peers. Citations expected." },
+                            "historical_performance": { "type": "STRING", "description": "Analysis of trends over at least the past 5-10 years. Citations expected." },
+                            "guidance": { "type": "STRING", "description": "Management's future outlook and projections. Citations expected." }
+                        },
+                        "required": [
+                            "revenue_growth_profitability", "balance_sheet_health", "cash_flow_dynamics", 
+                            "key_financial_ratios", "historical_performance", "guidance"
+                        ]
+                    },
+                    "industry_competitive_landscape": {
+                        "type": "OBJECT",
+                        "properties": {
+                            "industry_trends": { "type": "STRING", "description": "Overview of the industry, its growth prospects, and key trends. Citations expected." },
+                            "market_size_growth": { "type": "STRING", "description": "Current and projected market size. Citations expected." },
+                            "competitive_analysis": { "type": "STRING", "description": "Detailed competitive analysis: identify major competitors, discuss market share, competitive advantages (e.g., brand, technology, patents, cost structure, network effects), and barriers to entry. Citations expected." },
+                            "swot_analysis": { "type": "STRING", "description": "SWOT Analysis (Strengths, Weaknesses, Opportunities, Threats) specific to the company within its industry. Citations expected." }
+                        },
+                         "required": ["industry_trends", "market_size_growth", "competitive_analysis", "swot_analysis"]
+                    },
+                    "management_governance_assessment": {
+                        "type": "OBJECT",
+                        "properties": {
+                            "leadership_team": { "type": "STRING", "description": "Profile of key management figures (CEO, CFO, etc.) and their track record. Citations expected." },
+                            "board_of_directors": { "type": "STRING", "description": "Assessment of board independence, expertise, and composition. Citations expected." },
+                            "corporate_governance": { "type": "STRING", "description": "Assessment of corporate governance practices and potential red flags. Citations expected." }
+                        },
+                        "required": ["leadership_team", "board_of_directors", "corporate_governance"]
+                    },
+                    "recent_news_market_sentiment": {
+                        "type": "OBJECT",
+                        "properties": {
+                            "significant_events": { "type": "STRING", "description": "Summary of significant recent events (earnings, M&A, product launches, legal issues, regulatory actions). Citations expected." },
+                            "analyst_ratings_consensus": { "type": "STRING", "description": "Brief overview of market sentiment and institutional analyst consensus (without giving investment advice). Citations expected." },
+                            "social_sentiment": { "type": "STRING", "description": "General public perception (if relevant and reliably obtainable). Citations expected." } // Added social_sentiment as per prompt's research scope
+                        },
+                         "required": ["significant_events", "analyst_ratings_consensus", "social_sentiment"] // Updated required
+                    },
+                    "esg_factors": {
+                        "type": "OBJECT",
+                        "properties": {
+                            "environmental": { "type": "STRING", "description": "Discussion of the company's carbon footprint, resource efficiency, pollution control measures, and sustainable practices. Citations expected." },
+                            "social": { "type": "STRING", "description": "Examination of labor practices, diversity & inclusion initiatives, community engagement, and product safety. Citations expected." },
+                            "governance": { "type": "STRING", "description": "Assessment of ethics, transparency, board structure, and shareholder rights relevant to ESG. Citations expected." }
+                        },
+                        "required": ["environmental", "social", "governance"]
+                    },
+                    "key_risks_opportunities": {
+                        "type": "OBJECT",
+                        "properties": {
+                            "key_risks": { "type": "STRING", "description": "A balanced presentation of potential downside risks (market, operational, regulatory, competitive, company-specific). Citations expected." },
+                            "upside_opportunities": { "type": "STRING", "description": "Discussion of potential growth drivers (e.g., new markets, product innovation, efficiency gains, strategic initiatives). Citations expected." }
+                        },
+                         "required": ["key_risks", "upside_opportunities"]
+                    },
+                    "future_outlook_valuation_considerations": {
+                        "type": "STRING", 
+                        "description": "Discussion of the company's growth prospects, strategic initiatives, and anticipated challenges. Qualitative discussion on potential valuation drivers (e.g., growth expectations, margin expansion, market multiple comparisons). (Do NOT provide price targets or specific investment recommendations). Citations expected." 
+                    },
+                    "conclusion_key_insights": {
+                        "type": "STRING", 
+                        "description": "Summarize the most important findings and reinforce the core insights. Reiterate the overall thesis of the analysis. Citations expected." 
+                    },
+                    "information_integrity_statement": {
+                        "type": "OBJECT",
+                        "properties": {
+                            "statement_text": { "type": "STRING", "description": "This briefing was compiled by SARA, an AI assistant, based on publicly accessible information as of [Date of Report Generation]. Sources are tiered by perceived reliability and cited accordingly. While efforts are made to ensure accuracy and recency, information can change rapidly. Users are encouraged to conduct further verification, especially for time-sensitive data. This report is for informational purposes only and does not constitute financial or investment advice." },
+                            "source_types_used": { "type": "STRING", "description": "List of all source types used (e.g., 'Company Website, SEC Filings, Reputable Financial News, Credit Rating Agencies')." }
+                        },
+                        "required": ["statement_text", "source_types_used"]
+                    }
+                 },
+                 "required": [
+                    "company_name_researched", 
+                    "date_of_analysis", // Added to required
+                    "executive_summary", 
+                    "company_overview", 
+                    "financial_performance_analysis", 
+                    "industry_competitive_landscape", 
+                    "management_governance_assessment", 
+                    "recent_news_market_sentiment", 
+                    "esg_factors", 
+                    "key_risks_opportunities", 
+                    "future_outlook_valuation_considerations", 
+                    "conclusion_key_insights", 
+                    "information_integrity_statement"
+                ]
+            };
+
+            const payload = {
+                contents: chatHistory,
+                generationConfig: {
+                    responseMimeType: "application/json",
+                    responseSchema: fullResponseSchema
+                }
+            };
+
+            // Using empty string for API key to allow Canvas to inject it
+            const apiKey = "AIzaSyA6NoJnmHv8_gjr2-IdxSyoFSJq0AJnhnI"; 
+            const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-05-20:generateContent?key=${apiKey}`;
+            try {
+                const response = await fetch(apiUrl, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(payload)
+                });
+                const result = await response.json();
+
+                if (response.ok && result.candidates && result.candidates[0].content && result.candidates[0].content.parts && result.candidates[0].content.parts.length > 0) {
+                    const jsonString = result.candidates[0].content.parts[0].text;
+                    let reportData;
+                    try {
+                        reportData = JSON.parse(jsonString);
+                        // Add validation for the top-level keys if necessary, or rely on LLM to adhere to schema
+                        return { success: true, data: reportData };
+                    } catch (parseError) {
+                        console.error(`Failed to parse LLM response for ${companyName} as JSON:`, parseError, "\nRaw response:", jsonString);
+                        return { success: false, error: "Invalid JSON response", raw: jsonString };
+                    }
+                } else {
+                    console.error(`LLM API Error for ${companyName}:`, result);
+                    let errorMessage = `Could not retrieve information for "${companyName}".`;
+                     if (result.promptFeedback && result.promptFeedback.blockReason) {
+                         errorMessage += ` Reason: ${result.promptFeedback.blockReason}.`;
+                         if(result.promptFeedback.safetyRatings && result.promptFeedback.safetyRatings.length > 0) {
+                             errorMessage += ` Safety issues: ${result.promptFeedback.safetyRatings.map(r => `${r.category} (${r.probability})`).join(', ')}.`;
+                         }
+                    } else if (result.error) {
+                        errorMessage += ` API Error: ${result.error.message} (Code: ${result.error.code})`;
+                    }
+                    return { success: false, error: errorMessage };
+                }
+            } catch (error) {
+                console.error(`Error fetching report for ${companyName}:`, error);
+                return { success: false, error: error.message };
+            }
+        }
+
+        // Function to render a single section of a report into HTML
+        function renderReportSection(reportData, sectionKey) {
+            let content = '';
+            const data = reportData[sectionKey];
+
+            if (data && data !== "N/A") { // Only render if data is not null/undefined and not "N/A"
+                if (typeof data === 'object' && data !== null) {
+                    // Specific handling for integrity statement as it has 'statement_text' and 'source_types_used'
+                    if (sectionKey === 'information_integrity_statement') {
+                        const statementDate = new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+                        const defaultStatement = `This briefing was compiled by SARA, an AI assistant, based on publicly accessible information as of ${statementDate}. Sources are tiered by perceived reliability and cited accordingly. While efforts are made to ensure accuracy and recency, information can change rapidly. Users are encouraged to conduct further verification. This report is for informational purposes only and does not constitute financial or investment advice.`;
+                        content += `<p><em>${formatText(data.statement_text, defaultStatement)}</em></p>`;
+                        content += `<p><strong>Source Types Used:</strong> ${formatText(data.source_types_used, "N/A")}</p>`;
+                    } else { // For other nested objects (Company Overview, Financial, etc.)
+                        for (const subKey in data) {
+                            if (data.hasOwnProperty(subKey) && data[subKey] && data[subKey] !== "N/A") {
+                                const subTitle = subKey.replace(/_/g, ' ').split(' ').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ');
+                                content += `<h6 class="subsection-title">${subTitle}</h6><p>${formatText(data[subKey])}</p>`;
+                            } else if (data.hasOwnProperty(subKey)) {
+                                const subTitle = subKey.replace(/_/g, ' ').split(' ').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ');
+                                content += `<h6 class="subsection-title">${subTitle}</h6><p class="data-na">N/A</p>`;
+                            }
+                        }
+                    }
+                } else if (typeof data === 'string') { // For top-level string sections (Executive Summary, Future Outlook, Conclusion)
+                    content += `<p>${formatText(data)}</p>`;
+                } else {
+                    content += `<p class="data-na">N/A</p>`;
+                }
+            } else {
+                content += `<p class="data-na">N/A</p>`;
+            }
+            return content;
+        }
+
+        // Function to create an accordion item
+        function createAccordionItem(title, contentHtml) {
+            const accordionItem = document.createElement('div');
+            accordionItem.className = 'accordion-item rounded-sara shadow-sm mb-4';
+            accordionItem.innerHTML = `
+                <div class="accordion-header" role="button" aria-expanded="false" tabindex="0">
+                    <span>${title}</span>
+                    <svg class="arrow-icon w-5 h-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <polyline points="6 9 12 15 18 9"></polyline>
+                    </svg>
+                </div>
+                <div class="accordion-content">
+                    ${contentHtml}
+                </div>
+            `;
+            accordionItem.querySelector('.accordion-header').addEventListener('click', function() {
+                this.classList.toggle('active');
+                const content = this.nextElementSibling;
+                content.classList.toggle('open');
+            });
+            return accordionItem;
+        }
+
+
+        if (companySearchForm) {
+            companySearchForm.addEventListener('submit', async function(event) {
+                event.preventDefault();
+                if (!searchInputGlobal) return; 
+                const companyName = searchInputGlobal.value.trim();
+                if (!companyName) return;
+
+                if (loadingIndicator) loadingIndicator.classList.remove('hidden');
+                if (searchResultsContainer) searchResultsContainer.classList.add('hidden');
+                if (comparisonResultsContainer) comparisonResultsContainer.classList.add('hidden'); 
+                if (tipsContainer) tipsContainer.classList.add('hidden');
+                
+                const result = await fetchReportData(companyName); 
+                if (loadingIndicator) loadingIndicator.classList.add('hidden');
+                
+                if (searchResultsContent) {
+                    if (result.success) {
+                        const reportData = result.data;
+                        let htmlOutput = `
+                            <h2 class="text-3xl md:text-4xl font-bold mb-2 text-center text-primary-darker">${formatText(reportData.company_name_researched)} - Comprehensive Stock Research & Analysis</h2>
+                            <p class="text-center text-gray-600 mb-8">Date of Analysis: ${formatText(reportData.date_of_analysis || new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' }))}</p>
+                        `;
+
+                        // Map keys from schema to Roman numerals and display titles as per prompt
+                        const sectionsMap = [
+                            { key: 'executive_summary', title: 'I. Executive Summary' },
+                            { key: 'company_overview', title: 'II. Company Overview' },
+                            { key: 'financial_performance_analysis', title: 'III. Financial Performance Analysis (Last 5 Years & Latest Quarter/Year)' },
+                            { key: 'industry_competitive_landscape', title: 'IV. Industry and Competitive Landscape' },
+                            { key: 'management_governance_assessment', title: 'V. Management & Governance Assessment' },
+                            { key: 'recent_news_market_sentiment', title: 'VI. Recent News & Market Sentiment' },
+                            { key: 'esg_factors', title: 'VII. ESG Considerations' },
+                            { key: 'key_risks_opportunities', title: 'VIII. Key Risks and Opportunities' },
+                            { key: 'future_outlook_valuation_considerations', title: 'IX. Future Outlook & Valuation Considerations' },
+                            { key: 'conclusion_key_insights', title: 'X. Conclusion & Key Insights' },
+                            { key: 'information_integrity_statement', title: 'XI. Information Integrity Statement' },
+                        ];
+
+                        sectionsMap.forEach(section => {
+                            htmlOutput += `
+                                <div class="report-section">
+                                    <h5 class="section-title">${section.title}</h5>
+                                    ${renderReportSection(reportData, section.key)}
+                                </div>
+                            `;
+                        });
+
+                        searchResultsContent.innerHTML = htmlOutput;
+                        searchResultsContainer.classList.remove('hidden');
+                    } else {
+                        searchResultsContent.innerHTML = `<p class="text-red-600">Error: ${result.error || 'Failed to fetch report.'}</p>`;
+                        searchResultsContainer.classList.remove('hidden');
+                    }
+                }
+            });
+        }
+        
+        if (companyComparisonForm) {
+            companyComparisonForm.addEventListener('submit', async function(event) {
+                event.preventDefault();
+                if (!company1CompareInput || !company2CompareInput) return; 
+                const company1Name = company1CompareInput.value.trim();
+                const company2Name = company2CompareInput.value.trim();
+
+                if (!company1Name || !company2Name) {
+                    const customAlert = document.createElement('div');
+                    customAlert.className = 'fixed inset-0 bg-gray-600 bg-opacity-75 flex items-center justify-center z-[1000]';
+                    customAlert.innerHTML = `
+                        <div class="bg-white p-6 rounded-lg shadow-xl max-w-sm w-full text-center">
+                            <p class="text-lg font-semibold mb-4 text-gray-800">Please enter names for both companies to compare.</p>
+                            <button id="customAlertCloseCompare" class="px-5 py-2 bg-primary text-white rounded-md hover:bg-primary-light transition-colors">OK</button>
+                        </div>
+                    `;
+                    document.body.appendChild(customAlert);
+                    document.getElementById('customAlertCloseCompare')?.addEventListener('click', () => {
+                         if (customAlert.parentNode) { 
+                            document.body.removeChild(customAlert);
+                         }
+                    });
+                    return;
+                }
+
+                if (comparisonLoadingIndicator) comparisonLoadingIndicator.classList.remove('hidden');
+                if (comparisonResultsContainer) comparisonResultsContainer.classList.add('hidden');
+                if (searchResultsContainer) searchResultsContainer.classList.add('hidden'); 
+                if (tipsContainer) tipsContainer.classList.add('hidden');
+                if (comparisonAccordionContainer) comparisonAccordionContainer.innerHTML = ''; 
+                
+                let report1Data, report2Data;
+                let hasError = false;
+
+                try {
+                    const [result1, result2] = await Promise.all([
+                        fetchReportData(company1Name),
+                        fetchReportData(company2Name)
+                    ]);
+
+                    if (result1.success) {
+                        report1Data = result1.data;
+                    } else {
+                        console.error(`Error fetching data for Company 1: ${result1.error}`);
+                        comparisonAccordionContainer.innerHTML += `<div class="p-4 bg-red-100 text-red-700 rounded-md mb-2">Error loading report for ${company1Name}: ${result1.error}</div>`;
+                        hasError = true;
+                    }
+
+                    if (result2.success) {
+                        report2Data = result2.data;
+                    } else {
+                        console.error(`Error fetching data for Company 2: ${result2.error}`);
+                        comparisonAccordionContainer.innerHTML += `<div class="p-4 bg-red-100 text-red-700 rounded-md mb-2">Error loading report for ${company2Name}: ${result2.error}</div>`;
+                        hasError = true;
+                    }
+
+                    if (report1Data && report2Data) {
+                        // All sections from the SARA prompt's output structure, with Roman numerals for display
+                        const sectionsMap = [
+                            { key: 'executive_summary', title: 'I. Executive Summary' },
+                            { key: 'company_overview', title: 'II. Company Overview' },
+                            { key: 'financial_performance_analysis', title: 'III. Financial Performance Analysis (Last 5 Years & Latest Quarter/Year)' },
+                            { key: 'industry_competitive_landscape', title: 'IV. Industry and Competitive Landscape' },
+                            { key: 'management_governance_assessment', title: 'V. Management & Governance Assessment' },
+                            { key: 'recent_news_market_sentiment', title: 'VI. Recent News & Market Sentiment' },
+                            { key: 'esg_factors', title: 'VII. ESG Considerations' },
+                            { key: 'key_risks_opportunities', title: 'VIII. Key Risks and Opportunities' },
+                            { key: 'future_outlook_valuation_considerations', title: 'IX. Future Outlook & Valuation Considerations' },
+                            { key: 'conclusion_key_insights', title: 'X. Conclusion & Key Insights' },
+                            { key: 'information_integrity_statement', title: 'XI. Information Integrity Statement' },
+                        ];
+
+                        sectionsMap.forEach(section => {
+                            let content1 = '';
+                            let content2 = '';
+
+                            const data1 = report1Data[section.key];
+                            const data2 = report2Data[section.key];
+
+                            if (data1 && typeof data1 === 'object' && data1 !== null && !data1.statement_text) { // Nested objects
+                                for (const subKey in data1) {
+                                    if (data1.hasOwnProperty(subKey)) {
+                                        const subTitle = subKey.replace(/_/g, ' ').split(' ').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ');
+                                        content1 += `<h6 class="subsection-title">${subTitle}</h6><p>${formatText(data1[subKey])}</p>`;
+                                        content2 += `<h6 class="subsection-title">${subTitle}</h6><p>${formatText(data2?.[subKey])}</p>`; // Use optional chaining for data2
+                                    }
+                                }
+                            } else if (data1 && typeof data1 === 'string') { // Direct string
+                                content1 = `<p>${formatText(data1)}</p>`;
+                                content2 = `<p>${formatText(data2)}</p>`;
+                            } else if (data1 && typeof data1 === 'object' && data1 !== null && data1.statement_text) { // Integrity statement
+                                const statementDate = new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+                                const defaultStatement = `This briefing was compiled by SARA, an AI assistant, based on publicly accessible information as of ${statementDate}. Sources are tiered by perceived reliability and cited accordingly. While efforts are made to ensure accuracy and recency, information can change rapidly. Users are encouraged to conduct further verification. This report is for informational purposes only and does not constitute financial or investment advice.`;
+                                content1 = `<p><em>${formatText(data1.statement_text, defaultStatement)}</em></p><p><strong>Source Types Used:</strong> ${formatText(data1.source_types_used, "N/A")}</p>`;
+                                content2 = `<p><em>${formatText(data2?.statement_text, defaultStatement)}</em></p><p><strong>Source Types Used:</strong> ${formatText(data2?.source_types_used, "N/A")}</p>`;
+                            } else { // Handle N/A or missing data
+                                content1 = `<p class="data-na">N/A</p>`;
+                                content2 = `<p class="data-na">N/A</p>`;
+                            }
+
+                            const accordionContentHtml = `
+                                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 text-left">
+                                    <div class="company-comparison-column">
+                                        <h6>${formatText(report1Data.company_name_researched)}</h6>
+                                        ${content1}
+                                    </div>
+                                    <div class="company-comparison-column">
+                                        <h6>${formatText(report2Data.company_name_researched)}</h6>
+                                        ${content2}
+                                    </div>
+                                </div>
+                            `;
+                            comparisonAccordionContainer.appendChild(createAccordionItem(section.title, accordionContentHtml));
+                        });
+                    }
+
+                } catch (error) {
+                    console.error("Error in comparison process:", error);
+                    comparisonAccordionContainer.innerHTML = `<p class="text-red-600">An error occurred during the comparison process: ${error.message}</p>`;
+                    hasError = true;
+                } finally {
+                    if (comparisonLoadingIndicator) comparisonLoadingIndicator.classList.add('hidden');
+                    if (comparisonResultsContainer) { 
+                        comparisonResultsContainer.classList.remove('hidden'); 
+                        comparisonResultsContainer.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    }
+                }
+            });
+        }
+
+        if (closeResultsButton) {
+            closeResultsButton.addEventListener('click', () => {
+                if (searchResultsContainer) searchResultsContainer.classList.add('hidden');
+                if (searchInputGlobal) searchInputGlobal.value = ''; 
+                showTips(); 
+            });
+        }
+
+        if (closeComparisonButton) {
+            closeComparisonButton.addEventListener('click', () => {
+                if (comparisonResultsContainer) comparisonResultsContainer.classList.add('hidden');
+                if (company1CompareInput) company1CompareInput.value = '';
+                if (company2CompareInput) company2CompareInput.value = '';
+                showTips();
+            });
+        }
+
+        if (saveSinglePdfButton) {
+            saveSinglePdfButton.addEventListener('click', () => {
+                console.log("[PDF] Single PDF button clicked.");
+                const companyName = searchInputGlobal?.value.trim() || 'Company_Report';
+                const filename = `${companyName.replace(/[^a-zA-Z0-9]/g, '_')}_Report.pdf`;
+                if (searchResultsContent) { 
+                    generatePdf(searchResultsContent, filename);
+                } else {
+                    console.error("[PDF] searchResultsContent element not found for single PDF generation.");
+                }
+            });
+        }
+
+    </script>
+</body>
+</html>
